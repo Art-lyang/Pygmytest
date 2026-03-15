@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나는 어떤 피그미다람쥐 모프일까? 🐿</title>
+
+  <!-- ===== SEO & SNS 공유용 OG 메타태그 ===== -->
+  <!-- 카카오톡/인스타 공유 시 미리보기에 표시되는 정보 -->
+  <meta property="og:title"       content="나는 어떤 피그미다람쥐 모프일까? 🐿">
+  <meta property="og:description" content="성격 테스트로 알아보는 나의 피그미다람쥐 모프! 9가지 결과 중 무엇이 나올까요?">
+  <meta property="og:image"       content="https://pygmytest.com/og-image.jpg">
+  <!-- ↑ og-image.jpg 파일을 서버 루트에 업로드하세요 (권장 1200x630px) -->
+  <meta property="og:url"         content="https://pygmytest.com">
+  <meta property="og:type"        content="website">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="description"        content="성격 테스트로 알아보는 나의 피그미다람쥐 모프! 9가지 결과 중 무엇이 나올까요?">
+
+  <!-- ===== Google Analytics 4 (GA4) ===== -->
+  <!-- ※ 'G-XXXXXXXXXX' 부분을 본인의 GA4 측정 ID로 교체하세요 -->
+  <!-- GA4 측정 ID 발급: analytics.google.com → 관리 → 데이터 스트림 → 웹 스트림 추가 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+    // ↑ 두 곳의 'G-XXXXXXXXXX'를 실제 측정 ID로 교체
+  </script>
+
+  <!-- ===== 카카오 공유 SDK (현재 보류 중) ===== -->
+  <!-- 카카오 공유 버튼 활성화 시 아래 주석 해제 + script.js의 shareKakao() 활성화 -->
+  <!-- <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js" crossorigin="anonymous"></script> -->
+
+  <!-- ===== Google Fonts ===== -->
+  <!-- Gaegu: 손글씨 느낌 제목용 | Noto Sans KR: 본문용 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- ===== 스타일시트 ===== -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ============================================================
+       시작 화면
+       - 타이틀, 참여자 카운터, 모프 그리드, 시작 버튼
+       JS에서 startQuiz() 호출 시 이 섹션을 숨김
+  ============================================================ -->
+  <div id="start-section">
+
+    <div class="header">
+      <div class="header-badge">🐿 Pygmy Squirrel Morph Test</div>
+      <h1>내가 피그미다람쥐라면<br><em>어떤 모프</em>일까?</h1>
+      <p class="header-sub">
+        랜덤 10문항으로 알아보는 나의 모프<br>
+        다시 해도 매번 다른 질문이 나와요!
+      </p>
+      <!-- 참여자 수: JS animateCounter()로 숫자 애니메이션 처리 -->
+      <div class="counter-badge">
+        <span class="fire">🔥</span>
+        <span id="counter-num">1,284</span>명이 테스트했어요
+      </div>
+    </div>
+
+    <!-- 9가지 모프 미리보기 그리드: JS renderMorphGrid()로 동적 생성 -->
+    <div class="morph-intro">
+      <div class="morph-intro-title">✨ 9가지 결과 모프</div>
+      <div class="morph-grid" id="morphGrid"></div>
+    </div>
+
+    <!-- 테스트 시작 버튼 -->
+    <div class="start-section">
+      <button class="btn-start" onclick="startQuiz()">
+        <span class="squirrel">🐿</span>
+        테스트 시작하기
+      </button>
+    </div>
+
+  </div><!-- /start-section -->
+
+
+  <!-- ============================================================
+       퀴즈 화면
+       - 프로그레스 바, 질문 카드, 답변 버튼 목록
+       JS renderQuestion()으로 내용 동적 삽입
+  ============================================================ -->
+  <div id="quiz-section">
+    <div style="padding-top: 32px">
+
+      <!-- 진행도 바 -->
+      <div class="progress-wrap">
+        <div class="progress-header">
+          <span class="progress-label">진행도</span>
+          <span class="progress-count" id="progress-count">1 / 10</span>
+        </div>
+        <div class="progress-bar">
+          <!-- width는 JS에서 인라인으로 조정 -->
+          <div class="progress-fill" id="progress-fill" style="width: 10%"></div>
+        </div>
+      </div>
+
+      <!-- 질문 카드 (내용은 JS가 채움) -->
+      <div class="question-card" id="question-card">
+        <div class="question-num"  id="q-num">Q1</div>
+        <div class="question-text" id="q-text"></div>
+        <div class="options-list"  id="q-options"></div>
+      </div>
+
+    </div>
+  </div><!-- /quiz-section -->
+
+
+  <!-- ============================================================
+       로딩 화면
+       퀴즈 완료 후 결과 발표 전 2.2초간 표시
+  ============================================================ -->
+  <div id="loading-section">
+    <span class="loading-emoji">🔮</span>
+    <div class="loading-text">모프를 분석하는 중...</div>
+    <div class="loading-sub">당신의 성격에 꼭 맞는 모프를 찾고 있어요</div>
+    <div class="loading-dots">
+      <span></span><span></span><span></span>
+    </div>
+  </div><!-- /loading-section -->
+
+
+  <!-- ============================================================
+       결과 화면
+       - 모프 결과 카드
+       - 공유 섹션 (카카오 / 링크 복사)
+       - CTA 카드 (카카오방 / 인스타 / 스마트스토어)
+       - 다시 테스트 버튼
+  ============================================================ -->
+  <div id="result-section">
+    <div style="padding-top: 32px">
+
+      <div style="text-align:center; margin-bottom: 16px">
+        <div class="header-badge">✨ 당신의 모프 결과</div>
+      </div>
+
+      <!-- 결과 카드 (JS showResult()로 내용 채움) -->
+      <div class="result-card" id="result-card">
+
+        <!-- 헤더: 이모지, 모프 이름, 태그라인 (배경색은 JS에서 모프별 인라인 적용) -->
+        <div class="result-header" id="result-header">
+          <span class="result-emoji-big" id="res-emoji"></span>
+          <div class="result-label">당신의 피그미다람쥐 모프</div>
+          <div class="result-name"    id="res-name"></div>
+          <div class="result-name-en" id="res-name-en"></div>
+          <div class="result-tagline" id="res-tagline"></div>
+        </div>
+
+        <!-- 본문: 이미지, 설명, 특징 칩, 해설, 궁합 -->
+        <div class="result-body">
+
+          <!-- 모프 이미지 영역 (JS showResult()에서 morph.image URL로 채워짐) -->
+          <!-- 실제 모프 사진으로 교체할 때: script.js MORPHS 배열의 각 image 필드 URL을 변경하세요 -->
+          <div class="res-image" id="res-image"></div>
+
+          <div class="result-section-title">📖 모프 설명</div>
+          <div class="result-desc" id="res-desc"></div>
+
+          <div class="result-section-title">✨ 당신의 특징</div>
+          <div class="trait-chips" id="res-traits"></div>
+
+          <div class="result-section-title">💬 결과 해설</div>
+          <div class="result-desc" id="res-why"></div>
+
+          <div class="result-section-title">💕 잘 맞는 모프</div>
+          <div class="compatibility-box" id="res-compat"></div>
+        </div>
+
+      </div><!-- /result-card -->
+
+
+      <!-- 후킹 멘트 (JS renderHookMessage()로 랜덤 렌더) -->
+      <div class="hook-message" id="hook-message"></div>
+
+      <!-- 공유 섹션 -->
+      <div class="share-section">
+        <div class="share-title">🐿 친구에게 공유하기</div>
+        <div class="share-sub">내 모프 결과를 공유하고 친구 결과와 비교해 보세요!</div>
+        <div class="share-buttons">
+
+          <!-- 카카오 공유 버튼 (현재 보류 중 - 활성화 방법은 index.html 상단 주석 참고) -->
+
+          <!-- 링크 복사: script.js copyLink() -->
+          <button class="btn-copy" onclick="copyLink()">
+            🔗 링크 복사하기
+          </button>
+
+        </div>
+      </div><!-- /share-section -->
+
+
+      <!-- CTA 카드 3종 -->
+      <div class="cta-cards">
+
+        <!-- 카카오 오픈채팅 (GA4: cta_click / destination: kakao_openchat) -->
+        <a href="https://open.kakao.com/o/g6KVWGzb" target="_blank" class="cta-card kakao"
+           onclick="trackEvent('cta_click', { destination: 'kakao_openchat', morph_name: window.currentMorph ? window.currentMorph.name : 'unknown' })">
+          <div class="cta-icon">💬</div>
+          <div class="cta-text">
+            <div class="cta-label">피그미다람쥐 커뮤니티</div>
+            <div class="cta-desc">카카오톡 오픈채팅방에서 함께 이야기해요</div>
+          </div>
+          <div class="cta-arrow">→</div>
+        </a>
+
+        <!-- 인스타그램 (GA4: cta_click / destination: instagram) -->
+        <a href="https://www.instagram.com/__dragon_train?igsh=MXc0ZGpla2RtbDAyOA==" target="_blank" class="cta-card insta"
+           onclick="trackEvent('cta_click', { destination: 'instagram', morph_name: window.currentMorph ? window.currentMorph.name : 'unknown' })">
+          <div class="cta-icon" style="color:white; font-size:20px;">📷</div>
+          <div class="cta-text">
+            <div class="cta-label">실제 모프 사진 보기</div>
+            <div class="cta-desc">인스타그램에서 실제 피그미다람쥐를 만나요</div>
+          </div>
+          <div class="cta-arrow">→</div>
+        </a>
+
+        <!-- 스마트스토어 (GA4: cta_click / destination: smartstore) -->
+        <a href="https://m.smartstore.naver.com/dragon7" target="_blank" class="cta-card store"
+           onclick="trackEvent('cta_click', { destination: 'smartstore', morph_name: window.currentMorph ? window.currentMorph.name : 'unknown' })">
+          <div class="cta-icon" style="color:white; font-size:20px;">🛒</div>
+          <div class="cta-text">
+            <div class="cta-label">분양·용품 스마트스토어</div>
+            <div class="cta-desc">피그미다람쥐 분양 및 사육 용품 보기</div>
+          </div>
+          <div class="cta-arrow">→</div>
+        </a>
+
+      </div><!-- /cta-cards -->
+
+
+      <!-- 다시 테스트 버튼: script.js retryQuiz() -->
+      <button class="btn-retry" onclick="retryQuiz()">
+        🔄 다시 테스트하기 (매번 다른 질문이 나와요!)
+      </button>
+
+      <!-- 푸터 -->
+      <div class="footer">
+        이 테스트는 재미 요소가 포함된 성향형 콘텐츠입니다.<br>
+        실제 분양 시 건강 상태, 성격, 환경 적합성을 함께 확인하세요.<br><br>
+        © Dragon Train Pygmy Squirrel
+      </div>
+
+    </div>
+  </div><!-- /result-section -->
+
+</div><!-- /container -->
+
+
+<!-- ===== 토스트 알림 (복사 완료 등 피드백 메시지) ===== -->
+<div class="toast" id="toast"></div>
+
+
+<!-- ===== 메인 스크립트 ===== -->
+<script src="script.js"></script>
+
+</body>
+</html>
