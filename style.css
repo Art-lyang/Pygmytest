@@ -897,3 +897,36 @@ body::after {
   border-radius: 0 0 16px 16px;
   border-top: 1px solid rgba(196, 136, 90, 0.1);
 }
+
+
+/* ============================================================
+   16. 모프 그리드 아이콘 이미지 스타일
+   - 시작 화면 9가지 모프 미리보기 칩의 일러스트 이미지
+   ============================================================ */
+
+/* 이미지 있을 때 칩 레이아웃 조정 */
+.morph-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 6px;
+  gap: 4px;
+}
+
+/* 일러스트 아이콘 이미지 */
+.morph-chip-img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;  /* 비율 유지하며 꽉 채우기 */
+  display: block;
+}
+
+/* 모프 이름 텍스트 */
+.morph-chip-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--brown-mid);
+  text-align: center;
+  line-height: 1.3;
+}

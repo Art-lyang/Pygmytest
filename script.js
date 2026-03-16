@@ -11,6 +11,8 @@
 const MORPHS = [
   {
     id: 'normal',
+    // ↓ 모프 그리드용 일러스트 아이콘 이미지
+    icon: 'img/icon-normal.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
     image: 'img/img-normal.jpg',
     name: '노말',
@@ -24,6 +26,7 @@ const MORPHS = [
   },
   {
     id: 'ringtail',
+    icon: 'img/icon-ringtail.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
     image: 'img/img-ringtail.jpg',
     name: '링테일',
@@ -37,6 +40,7 @@ const MORPHS = [
   },
   {
     id: 'pied',
+    icon: 'img/icon-pied.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
     image: 'img/img-pied.jpg',
     name: '파이드',
@@ -50,6 +54,7 @@ const MORPHS = [
   },
   {
     id: 'oreo',
+    icon: 'img/icon-oreo.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
     image: 'img/img-oreo.jpg',
     name: '오레오',
@@ -63,6 +68,7 @@ const MORPHS = [
   },
   {
     id: 'dalmatian',
+    icon: 'img/icon-dalmatian.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
     image: 'img/img-dalmatian.jpg',
     name: '달마시안',
@@ -76,6 +82,7 @@ const MORPHS = [
   },
   {
     id: 'mask',
+    icon: 'img/icon-mask.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
     image: 'img/img-mask.jpg',
     name: '마스크',
@@ -89,6 +96,7 @@ const MORPHS = [
   },
   {
     id: 'high-white',
+    icon: 'img/icon-high-white.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
     image: 'img/img-high-white.jpg',
     name: '하이화이트',
@@ -102,6 +110,7 @@ const MORPHS = [
   },
   {
     id: 'lucistic',
+    icon: 'img/icon-lucistic.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
     image: 'img/img-lucistic.jpg',
     name: '루시스틱',
@@ -115,6 +124,7 @@ const MORPHS = [
   },
   {
     id: 'black',
+    icon: 'img/icon-black.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
     image: 'img/img-black.jpg',
     name: '블랙',
@@ -397,7 +407,7 @@ const ALL_QUESTIONS = [
     ]
   },
   {
-    text: "내가 휴가지를 선택한다면?",
+    text: "내가 선택한다면?",
     options: [
       { text: "🌲 울창한 숲 속의 오두막",            scores: { normal: 3, lucistic: 2 } },
       { text: "🌊 파도 소리 들리는 오션뷰",          scores: { pied: 3, dalmatian: 2 } },
@@ -454,8 +464,8 @@ const FUNNY_QUESTIONS = [
   {
     text: "다람쥐가 내 이름을 부른다면 뭐라고 부를 것 같아?",
     options: [
-      { text: "🌿 \"야, 집사 여기봐봐\"",                          scores: { normal: 2, 'high-white': 1 } },
-      { text: "✨ \"오, 주인님 안녕?\"",                             scores: { dalmatian: 2, ringtail: 1 } },
+      { text: "🌿 \"야, 착한 애\"",                          scores: { normal: 2, 'high-white': 1 } },
+      { text: "✨ \"오, 인싸\"",                             scores: { dalmatian: 2, ringtail: 1 } },
       { text: "🎭 \"저기… 당신\"",                          scores: { mask: 2, lucistic: 1 } },
       { text: "🖤 \"…(그냥 눈빛으로)\"",                    scores: { black: 2, oreo: 1 } }
     ]
@@ -588,9 +598,13 @@ function animateCounter() {
 function renderMorphGrid() {
   const grid = document.getElementById('morphGrid');
   grid.innerHTML = MORPHS.map(m =>
+    // icon 이미지가 있으면 이미지로, 없으면 이모지로 표시
     `<div class="morph-chip">
-      <span class="emoji">${m.emoji}</span>
-      ${m.name}
+      ${m.icon
+        ? `<img src="${m.icon}" alt="${m.name}" class="morph-chip-img" onerror="this.style.display='none'">`
+        : `<span class="emoji">${m.emoji}</span>`
+      }
+      <span class="morph-chip-name">${m.name}</span>
     </div>`
   ).join('');
 }
