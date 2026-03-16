@@ -454,8 +454,8 @@ const FUNNY_QUESTIONS = [
   {
     text: "다람쥐가 내 이름을 부른다면 뭐라고 부를 것 같아?",
     options: [
-      { text: "🌿 \"야, 착한 애\"",                          scores: { normal: 2, 'high-white': 1 } },
-      { text: "✨ \"오, 인싸\"",                             scores: { dalmatian: 2, ringtail: 1 } },
+      { text: "🌿 \"야, 집사 여기봐!\"",                          scores: { normal: 2, 'high-white': 1 } },
+      { text: "✨ \"오, 인싸 주인 아냐~\"",                             scores: { dalmatian: 2, ringtail: 1 } },
       { text: "🎭 \"저기… 당신\"",                          scores: { mask: 2, lucistic: 1 } },
       { text: "🖤 \"…(그냥 눈빛으로)\"",                    scores: { black: 2, oreo: 1 } }
     ]
@@ -472,10 +472,10 @@ const FUNNY_QUESTIONS = [
   {
     text: "다람쥐가 내 카드로 쇼핑을 한다면 뭘 살 것 같아?",
     options: [
-      { text: "🌰 도토리 대량 구매",                        scores: { normal: 2, 'high-white': 1 } },
+      { text: "🐛 밀웜,슈밀 대량 구매",                        scores: { normal: 2, 'high-white': 1 } },
       { text: "👟 러닝화 (발에 맞는 사이즈로)",             scores: { dalmatian: 2, ringtail: 1 } },
       { text: "🕶️ 선글라스 (폼나려고)",                    scores: { black: 2, mask: 1 } },
-      { text: "🎨 취미용품 한가득",                         scores: { lucistic: 2, pied: 1 } }
+      { text: "🎨 최애간식 한가득",                         scores: { lucistic: 2, pied: 1 } }
     ]
   },
   {
@@ -499,7 +499,7 @@ const FUNNY_QUESTIONS = [
   {
     text: "피그미다람쥐가 내 방에서 하룻밤 자고 갔다. 흔적은?",
     options: [
-      { text: "🌰 도토리가 침대 밑에 숨겨져 있음",          scores: { normal: 2, 'high-white': 1 } },
+      { text: "🐛 밀웜껍질이 침대 밑에 숨겨져 있음",          scores: { normal: 2, 'high-white': 1 } },
       { text: "💅 내 립밥이 없어짐",                        scores: { ringtail: 2, pied: 1 } },
       { text: "📱 셀카가 수십 장 찍혀 있음",                scores: { dalmatian: 2, oreo: 1 } },
       { text: "🕵️ 아무 흔적도 없음 (미스터리)",            scores: { mask: 2, black: 1 } }
