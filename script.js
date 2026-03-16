@@ -210,14 +210,14 @@ const ALL_QUESTIONS = [
     options: [
       { text: "💛 진심 어린 관계와 신뢰",             scores: { normal: 3, 'high-white': 2 } },
       { text: "🎯 내 신념과 원칙",                    scores: { black: 3, oreo: 2 } },
-      { text: "🌈 자유와 나만의 개성",                scores: { pied: 3, ringtail: 2 } },
+      { text: "🌈 자유와 나만의 개성",                scores: { pied: 3, ringtail: 3 } },
       { text: "🌸 섬세한 감정과 아름다움",            scores: { lucistic: 3, mask: 1, dust: 2 } }
     ]
   },
   {
     text: "모임에서 나의 포지션은?",
     options: [
-      { text: "🎤 자연스럽게 중심이 되는 편",         scores: { dalmatian: 3, ringtail: 2 } },
+      { text: "🎤 자연스럽게 중심이 되는 편",         scores: { dalmatian: 3, ringtail: 3 } },
       { text: "🌿 분위기 잘 맞춰주는 서포터",         scores: { normal: 3, 'high-white': 2 } },
       { text: "🎭 관찰하다 핵심 발언 날리기",         scores: { mask: 3, black: 2, dust: 2 } },
       { text: "🎨 독특한 아이디어 내는 사람",         scores: { pied: 3, lucistic: 2, dust: 1 } }
@@ -226,7 +226,7 @@ const ALL_QUESTIONS = [
   {
     text: "나에게 이상적인 하루란?",
     options: [
-      { text: "☀️ 계획대로 알차게 흘러가는 날",       scores: { oreo: 3, normal: 2 } },
+      { text: "☀️ 계획대로 알차게 흘러가는 날",       scores: { oreo: 3, normal: 2, ringtail: 1 } },
       { text: "🎲 예상치 못한 재미가 생기는 날",      scores: { pied: 3, dalmatian: 2 } },
       { text: "🌙 혼자 깊이 집중하는 고요한 날",      scores: { lucistic: 3, black: 2, dust: 2 } },
       { text: "👥 소중한 사람들과 함께하는 날",       scores: { 'high-white': 3, dalmatian: 1 } }
@@ -237,7 +237,7 @@ const ALL_QUESTIONS = [
     options: [
       { text: "🟤 자연스럽고 무난한 베이직",          scores: { normal: 3, 'high-white': 1 } },
       { text: "⬛ 클린한 블랙 & 화이트 대비",         scores: { oreo: 3, black: 2 } },
-      { text: "🌈 포인트 있는 개성 아이템",           scores: { ringtail: 3, pied: 2 } },
+      { text: "🌈 포인트 있는 개성 아이템",           scores: { ringtail: 3, pied: 2, oreo: 1 } },
       { text: "✨ 은은하고 감각적인 스타일",          scores: { lucistic: 3, mask: 2, dust: 3 } }
     ]
   },
@@ -247,14 +247,14 @@ const ALL_QUESTIONS = [
       { text: "💬 바로 대화로 해결하려 해",           scores: { dalmatian: 2, normal: 2 } },
       { text: "🤔 혼자 충분히 생각하고 정리",         scores: { black: 3, lucistic: 2, dust: 2 } },
       { text: "🤝 상대 입장에서 먼저 생각해",         scores: { 'high-white': 3, normal: 1 } },
-      { text: "📝 명확하게 입장 정리해서 전달",       scores: { oreo: 3, mask: 1 } }
+      { text: "📝 명확하게 입장 정리해서 전달",       scores: { oreo: 3, mask: 1, ringtail: 2 } }
     ]
   },
   {
     text: "누군가 나를 한 단어로 표현한다면?",
     options: [
       { text: "🌿 따뜻함",                            scores: { normal: 3, 'high-white': 2 } },
-      { text: "⚡ 에너지",                            scores: { dalmatian: 3, ringtail: 2 } },
+      { text: "⚡ 에너지",                            scores: { dalmatian: 3, ringtail: 3 } },
       { text: "🌙 신비로움",                          scores: { mask: 3, lucistic: 2, dust: 2 } },
       { text: "🦅 독립적",                            scores: { black: 3, pied: 1 } }
     ]
@@ -292,7 +292,7 @@ const ALL_QUESTIONS = [
       { text: "🌱 새로운 취미나 도전을 시작할 때",   scores: { pied: 3, dalmatian: 2 } },
       { text: "👥 오랜 친구와 깊은 대화를 나눌 때",  scores: { normal: 3, 'high-white': 2 } },
       { text: "🌙 혼자 몰입해서 뭔가 완성될 때",     scores: { black: 3, lucistic: 2 } },
-      { text: "✨ 예상 밖의 좋은 일이 생길 때",      scores: { ringtail: 3, dalmatian: 1 } }
+      { text: "✨ 예상 밖의 좋은 일이 생길 때",      scores: { ringtail: 3, dalmatian: 1, oreo: 2 } }
     ]
   },
   {
@@ -308,7 +308,7 @@ const ALL_QUESTIONS = [
     text: "친구가 고민을 털어놓으면 나는?",
     options: [
       { text: "🤗 끝까지 들어주고 공감해줘",         scores: { 'high-white': 3, normal: 2 } },
-      { text: "💡 해결책을 같이 찾아줘",             scores: { oreo: 3, black: 2 } },
+      { text: "💡 해결책을 같이 찾아줘",             scores: { oreo: 3, black: 2, ringtail: 1 } },
       { text: "😊 기분 전환시켜 주려고 노력해",      scores: { dalmatian: 3, pied: 1 } },
       { text: "🤫 판단 없이 들어줘, 말수가 적더라도",scores: { mask: 2, lucistic: 1, dust: 2 } }
     ]
@@ -317,7 +317,7 @@ const ALL_QUESTIONS = [
     text: "나를 가장 잘 표현하는 시간대는?",
     options: [
       { text: "🌅 상쾌한 아침, 에너지 넘침",         scores: { normal: 2, dalmatian: 2 } },
-      { text: "🌞 활기찬 낮 시간대",                 scores: { dalmatian: 3, oreo: 1 } },
+      { text: "🌞 활기찬 낮 시간대",                 scores: { dalmatian: 3, oreo: 2, ringtail: 1 } },
       { text: "🌆 여유로운 저녁 노을 시간",          scores: { 'high-white': 2, lucistic: 1, dust: 2 } },
       { text: "🌙 모두가 잠든 고요한 밤",            scores: { black: 3, mask: 2 } }
     ]
@@ -327,14 +327,14 @@ const ALL_QUESTIONS = [
     options: [
       { text: "🤝 어디서나 편안하게 해주는 포용력",  scores: { normal: 3, 'high-white': 2 } },
       { text: "🎯 흔들리지 않는 뚜렷한 주관",        scores: { black: 3, oreo: 2 } },
-      { text: "🌈 재미있고 독특한 발상",             scores: { pied: 3, ringtail: 2 } },
+      { text: "🌈 재미있고 독특한 발상",             scores: { pied: 3, ringtail: 2, oreo: 1 } },
       { text: "💎 깊은 감수성과 섬세한 공감",        scores: { lucistic: 3, mask: 2, dust: 3 } }
     ]
   },
   {
     text: "나는 어떤 여행을 좋아하나요?",
     options: [
-      { text: "🗺️ 꼼꼼히 계획된 완벽한 여행",        scores: { oreo: 3, normal: 2 } },
+      { text: "🗺️ 꼼꼼히 계획된 완벽한 여행",        scores: { oreo: 3, normal: 2, ringtail: 1 } },
       { text: "🎲 즉흥으로 흘러가는 여행",           scores: { pied: 3, dalmatian: 2 } },
       { text: "🌿 자연 속 힐링 여행",               scores: { lucistic: 3, 'high-white': 2, dust: 2 } },
       { text: "🎭 감각적인 문화·예술 여행",          scores: { mask: 3, ringtail: 1 } }
@@ -343,10 +343,10 @@ const ALL_QUESTIONS = [
   {
     text: "팀 프로젝트에서 나는?",
     options: [
-      { text: "🎯 목표 향해 끌고 가는 리더",         scores: { black: 3, oreo: 2 } },
+      { text: "🎯 목표 향해 끌고 가는 리더",         scores: { black: 3, oreo: 2, ringtail: 1 } },
       { text: "🤝 갈등 조율하는 중재자",             scores: { normal: 3, 'high-white': 2 } },
       { text: "💡 아이디어 폭발하는 크리에이터",     scores: { pied: 3, dalmatian: 2 } },
-      { text: "🔍 꼼꼼하게 체크하는 완성자",         scores: { mask: 3, lucistic: 2 } }
+      { text: "🔍 꼼꼼하게 체크하는 완성자",         scores: { mask: 3, lucistic: 2, oreo: 2 } }
     ]
   },
   {
@@ -354,7 +354,7 @@ const ALL_QUESTIONS = [
     options: [
       { text: "🏠 가장 편안하고 나다운 공간",        scores: { normal: 3, 'high-white': 2 } },
       { text: "🎨 취향으로 꾸민 나만의 세계",        scores: { lucistic: 3, pied: 2, dust: 2 } },
-      { text: "⚡ 충전하고 다시 나가기 위한 베이스",  scores: { dalmatian: 3, ringtail: 2 } },
+      { text: "⚡ 충전하고 다시 나가기 위한 베이스",  scores: { dalmatian: 3, ringtail: 2, oreo: 1 } },
       { text: "🌙 완전한 고독과 사색의 공간",        scores: { black: 3, mask: 2 } }
     ]
   },
@@ -364,13 +364,13 @@ const ALL_QUESTIONS = [
       { text: "☀️ 밝고 에너지 넘치는 친구",          scores: { dalmatian: 3, normal: 1 } },
       { text: "🌿 편하고 조용히 함께 있을 수 있는 친구", scores: { 'high-white': 3, normal: 2 } },
       { text: "💭 생각 깊고 대화가 통하는 친구",     scores: { mask: 3, lucistic: 2 } },
-      { text: "🎲 예측불가하고 재미있는 친구",       scores: { pied: 3, ringtail: 2 } }
+      { text: "🎲 예측불가하고 재미있는 친구",       scores: { pied: 3, ringtail: 2, oreo: 2 } }
     ]
   },
   {
     text: "내가 결정할 때 더 의지하는 건?",
     options: [
-      { text: "💭 논리적인 분석과 판단",             scores: { oreo: 3, black: 2 } },
+      { text: "💭 논리적인 분석과 판단",             scores: { oreo: 3, black: 2, ringtail: 1 } },
       { text: "❤️ 직관과 감정",                     scores: { lucistic: 3, pied: 2, dust: 1 } },
       { text: "👥 주변 의견과 분위기",               scores: { normal: 2, 'high-white': 2 } },
       { text: "📋 경험과 원칙",                      scores: { mask: 3, dalmatian: 1 } }
@@ -400,7 +400,7 @@ const ALL_QUESTIONS = [
       { text: "📖 관심 있는 분야 파고들기",          scores: { mask: 3, black: 2, dust: 1 } },
       { text: "🎵 노래 흥얼거리거나 리듬 타기",      scores: { dalmatian: 3, normal: 1 } },
       { text: "✍️ 생각이나 감정 기록하기",           scores: { lucistic: 3, 'high-white': 2, dust: 2 } },
-      { text: "🤔 혼자서 시뮬레이션 해보기",         scores: { oreo: 3, pied: 1, dust: 2 } }
+      { text: "🤔 혼자서 시뮬레이션 해보기",         scores: { oreo: 3, pied: 1, dust: 2, ringtail: 2 } }
     ]
   },
   {
@@ -416,7 +416,7 @@ const ALL_QUESTIONS = [
     text: "나를 화나게 하는 건?",
     options: [
       { text: "😠 배신감이나 신뢰 깨짐",             scores: { normal: 3, 'high-white': 2 } },
-      { text: "😤 불합리하거나 불공평한 상황",       scores: { black: 3, oreo: 2 } },
+      { text: "😤 불합리하거나 불공평한 상황",       scores: { black: 3, oreo: 2, ringtail: 1 } },
       { text: "😒 개성이나 다양성을 무시할 때",      scores: { pied: 3, ringtail: 2 } },
       { text: "😶 나를 오해하거나 편견을 가질 때",  scores: { mask: 3, lucistic: 2, dust: 2 } }
     ]
