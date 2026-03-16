@@ -454,8 +454,8 @@ const FUNNY_QUESTIONS = [
   {
     text: "다람쥐가 내 이름을 부른다면 뭐라고 부를 것 같아?",
     options: [
-      { text: "🌿 \"야, 착한 애\"",                          scores: { normal: 2, 'high-white': 1 } },
-      { text: "✨ \"오, 인싸\"",                             scores: { dalmatian: 2, ringtail: 1 } },
+      { text: "🌿 \"야, 집사 여기봐봐\"",                          scores: { normal: 2, 'high-white': 1 } },
+      { text: "✨ \"오, 주인님 안녕?\"",                             scores: { dalmatian: 2, ringtail: 1 } },
       { text: "🎭 \"저기… 당신\"",                          scores: { mask: 2, lucistic: 1 } },
       { text: "🖤 \"…(그냥 눈빛으로)\"",                    scores: { black: 2, oreo: 1 } }
     ]
