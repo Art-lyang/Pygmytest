@@ -397,7 +397,7 @@ const ALL_QUESTIONS = [
     ]
   },
   {
-    text: "내가 선택한다면?",
+    text: "내가 휴가지를 선택한다면?",
     options: [
       { text: "🌲 울창한 숲 속의 오두막",            scores: { normal: 3, lucistic: 2 } },
       { text: "🌊 파도 소리 들리는 오션뷰",          scores: { pied: 3, dalmatian: 2 } },
