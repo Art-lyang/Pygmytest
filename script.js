@@ -781,6 +781,7 @@ function showResult() {
     pied:         '#F5F0FF',
     oreo:         '#F0F0F0',
     dalmatian:    '#FFF8E8',
+    dust:        '#FFF8E8',
     mask:         '#EEF4F0',
     'high-white': '#F8F8FF',
     lucistic:     '#FFF5E0',
