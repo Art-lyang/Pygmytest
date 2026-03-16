@@ -43,7 +43,7 @@ const MORPHS = [
     nameEn: 'Pied',
     emoji: '🤍',
     tagline: '독특한 패턴의 소유자',
-    desc: '파이드는 흰 반점이 목도리처럼 퍼진 아이가 많은 독특한 패턴을 가진 모프예요. 세상에 똑같은 개체가 없는 유일무이한 존재랍니다.',
+    desc: '파이드는 흰 반점이 불규칙하게 퍼진 독특한 패턴을 가진 모프예요. 세상에 똑같은 개체가 없는 유일무이한 존재랍니다.',
     traits: ['유니크함', '예측불가', '특별함', '자유로움'],
     why: '당신은 틀에 박히지 않는 자유로운 영혼이에요. 예측 불가능한 면이 있지만, 그게 오히려 매력으로 작용하는 타입이에요.',
     compat: '✨ 잘 맞는 모프: 노말, 하이화이트\n안정적인 모프가 당신의 자유로운 에너지를 잘 받아줘요.'
@@ -108,7 +108,7 @@ const MORPHS = [
     nameEn: 'Lucistic',
     emoji: '🌕',
     tagline: '달빛처럼 은은한 빛',
-    desc: '루시스틱은 온몸이 하얀 솜뭉치 같은 모프예요. 눈부시게 새하얀 털이 특징으로, 보는 순간 저절로 손이 가는 귀여움을 가지고 있어요.',
+    desc: '루시스틱은 전체적으로 밝고 연한 색조를 띠는 모프예요. 마치 달빛이 스민 것처럼 은은하고 고운 빛깔이 특징이에요.',
     traits: ['감수성', '섬세함', '예술적', '차분함'],
     why: '당신은 세상을 섬세하게 느끼는 감수성이 풍부한 사람이에요. 예술적 감각이 있고, 깊이 있는 대화를 좋아하는 내면이 풍부한 타입이에요.',
     compat: '✨ 잘 맞는 모프: 하이화이트, 파이드\n섬세한 감성을 이해해주는 모프와 잘 통해요.'
@@ -454,8 +454,8 @@ const FUNNY_QUESTIONS = [
   {
     text: "다람쥐가 내 이름을 부른다면 뭐라고 부를 것 같아?",
     options: [
-      { text: "🌿 \"야, 집사 여기봐!\"",                          scores: { normal: 2, 'high-white': 1 } },
-      { text: "✨ \"오, 인싸 주인 아냐~\"",                             scores: { dalmatian: 2, ringtail: 1 } },
+      { text: "🌿 \"야, 착한 애\"",                          scores: { normal: 2, 'high-white': 1 } },
+      { text: "✨ \"오, 인싸\"",                             scores: { dalmatian: 2, ringtail: 1 } },
       { text: "🎭 \"저기… 당신\"",                          scores: { mask: 2, lucistic: 1 } },
       { text: "🖤 \"…(그냥 눈빛으로)\"",                    scores: { black: 2, oreo: 1 } }
     ]
@@ -472,10 +472,10 @@ const FUNNY_QUESTIONS = [
   {
     text: "다람쥐가 내 카드로 쇼핑을 한다면 뭘 살 것 같아?",
     options: [
-      { text: "🐛 밀웜,슈밀 대량 구매",                        scores: { normal: 2, 'high-white': 1 } },
+      { text: "🌰 도토리 대량 구매",                        scores: { normal: 2, 'high-white': 1 } },
       { text: "👟 러닝화 (발에 맞는 사이즈로)",             scores: { dalmatian: 2, ringtail: 1 } },
       { text: "🕶️ 선글라스 (폼나려고)",                    scores: { black: 2, mask: 1 } },
-      { text: "🎨 최애간식 한가득",                         scores: { lucistic: 2, pied: 1 } }
+      { text: "🎨 취미용품 한가득",                         scores: { lucistic: 2, pied: 1 } }
     ]
   },
   {
@@ -499,7 +499,7 @@ const FUNNY_QUESTIONS = [
   {
     text: "피그미다람쥐가 내 방에서 하룻밤 자고 갔다. 흔적은?",
     options: [
-      { text: "🐛 밀웜껍질이 침대 밑에 숨겨져 있음",          scores: { normal: 2, 'high-white': 1 } },
+      { text: "🌰 도토리가 침대 밑에 숨겨져 있음",          scores: { normal: 2, 'high-white': 1 } },
       { text: "💅 내 립밥이 없어짐",                        scores: { ringtail: 2, pied: 1 } },
       { text: "📱 셀카가 수십 장 찍혀 있음",                scores: { dalmatian: 2, oreo: 1 } },
       { text: "🕵️ 아무 흔적도 없음 (미스터리)",            scores: { mask: 2, black: 1 } }
@@ -558,18 +558,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ============================================================
-   5. 참여자 카운터 애니메이션
-   숫자가 올라가며 표시 → 실시간처럼 보이는 효과
+   카운터 애니메이션
+   - base: 표시할 기준 숫자 (GA4 quiz_complete 수 확인 후 주기적으로 업데이트)
+   - extra: 매번 조금씩 다르게 보이게 하는 랜덤 범위 (1~15)
+   - 업데이트 방법: base 숫자만 실제 완료 수로 교체 후 깃허브 재업로드
    ============================================================ */
 function animateCounter() {
   const el = document.getElementById('counter-num');
-  const base = 1284;
-  const extra = Math.floor(Math.random() * 50); // 방문마다 조금씩 다른 숫자
+  const base = 1000;                              // ← GA4 확인 후 이 숫자 업데이트
+  const extra = Math.floor(Math.random() * 15);  // 1000~1014 사이로 자연스럽게
   const target = base + extra;
-  let current = target - 30;
+  let current = target - 20;
 
   const timer = setInterval(() => {
-    current += 2;
+    current += 1;
     el.textContent = current.toLocaleString();
     if (current >= target) {
       el.textContent = target.toLocaleString();
