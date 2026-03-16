@@ -912,14 +912,25 @@ body::after {
   justify-content: center;
   padding: 10px 6px;
   gap: 4px;
+  background: white;
 }
 
-/* 일러스트 아이콘 이미지 */
+/* 이미지 고정 컨테이너 - 모든 칩 동일한 크기 박스 */
+.morph-chip-img-wrap {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 일러스트 아이콘 이미지 - 박스 안에서 비율 유지하며 최대 크기로 */
 .morph-chip-img {
-  width: 52px;
-  height: 52px;
-  object-fit: contain;  /* 비율 유지하며 꽉 채우기 */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
+  background: transparent;
 }
 
 /* 모프 이름 텍스트 */

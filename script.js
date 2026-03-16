@@ -601,7 +601,9 @@ function renderMorphGrid() {
     // icon 이미지가 있으면 이미지로, 없으면 이모지로 표시
     `<div class="morph-chip">
       ${m.icon
-        ? `<img src="${m.icon}" alt="${m.name}" class="morph-chip-img" onerror="this.style.display='none'">`
+        ? `<div class="morph-chip-img-wrap">
+             <img src="${m.icon}" alt="${m.name}" class="morph-chip-img" onerror="this.parentElement.style.display='none'">
+           </div>`
         : `<span class="emoji">${m.emoji}</span>`
       }
       <span class="morph-chip-name">${m.name}</span>
