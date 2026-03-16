@@ -788,7 +788,13 @@ function showResult() {
   }
 
   // 결과 데이터 삽입
-  document.getElementById('res-emoji').textContent    = morph.emoji;
+  // 결과 화면 상단 아이콘 - icon 이미지가 있으면 이미지로, 없으면 이모지로 표시
+  const resEmojiEl = document.getElementById('res-emoji');
+  if (morph.icon) {
+    resEmojiEl.innerHTML = `<img src="${morph.icon}" alt="${morph.name}" class="result-icon-img" onerror="this.parentElement.textContent='${morph.emoji}'">`;
+  } else {
+    resEmojiEl.textContent = morph.emoji;
+  }
   document.getElementById('res-name').textContent     = morph.name + ' 모프';
   document.getElementById('res-name-en').textContent  = morph.nameEn + ' Morph';
   document.getElementById('res-tagline').textContent  = morph.tagline;

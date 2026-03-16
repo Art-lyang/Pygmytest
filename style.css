@@ -454,6 +454,18 @@ body::after {
   animation: wiggle 3s ease-in-out infinite;
   filter: drop-shadow(0 4px 8px rgba(61,31,10,0.15));
 }
+
+/* 결과 화면 상단 아이콘 이미지 (이모지 대체) */
+.result-icon-img {
+  width: 80px;       /* 현재 이모지(72px)와 비슷한 크기 */
+  height: 80px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  background: transparent;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
 @keyframes wiggle {
   0%, 100% { transform: rotate(-5deg) scale(1); }
   25%       { transform: rotate(5deg) scale(1.05); }
