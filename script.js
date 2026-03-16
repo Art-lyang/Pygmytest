@@ -769,18 +769,21 @@ function showResult() {
     mask:         '#EEF4F0',
     'high-white': '#F8F8FF',
     lucistic:     '#FFF5E0',
-    black:        '#2A2A2A'  // 블랙 모프는 다크 배경
+    black:        '#2A2A2A'  // 블랙 모프만 다크 배경
   };
-
-  // 다크 배경일 때 텍스트를 흰색으로
-  const darkMorphs = { black: true };
 
   // 결과 헤더 배경 적용
   const header = document.getElementById('result-header');
   header.style.background = bgColors[morph.id] || '#FFF';
 
-  // 블랙 모프 등 다크 배경일 때 텍스트 색 조정
-  if (darkMorphs[morph.id]) {
+  // 텍스트 색상 항상 초기화 (다시 테스트 시 이전 색상 남아있는 문제 방지)
+  header.style.color = '';
+  header.querySelector('.result-label').style.color = '';
+  header.querySelector('.result-name').style.color = '';
+  header.querySelector('.result-name-en').style.color = '';
+
+  // 블랙 모프만 다크 배경이라 흰색 텍스트 적용
+  if (morph.id === 'black') {
     header.style.color = 'white';
     header.querySelector('.result-label').style.color = 'rgba(255,255,255,0.7)';
     header.querySelector('.result-name').style.color = 'white';
