@@ -328,12 +328,42 @@
 </div><!-- /container -->
 
 
+<!-- ===== 하단 고정 저작권 바 ===== -->
+<div class="copyright-bar">
+  🐿 본 페이지의 모든 이미지 및 콘텐츠의 저작권은 드래곤길들이기 파충류샵에 있으며, 무단 복제·배포·상업적 이용을 금합니다. ⓒ Dragon Train All Rights Reserved.
+</div>
+
 <!-- ===== 토스트 알림 (복사 완료 등 피드백 메시지) ===== -->
 <div class="toast" id="toast"></div>
 
 
 <!-- ===== 메인 스크립트 ===== -->
 <script src="script.js"></script>
+
+<!-- ===== 이미지 보호 스크립트 ===== -->
+<script>
+  // 우클릭 방지
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+  });
+
+  // 이미지 드래그 저장 방지
+  document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // 키보드 단축키 저장 방지 (Ctrl+S, Ctrl+U)
+  document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'u')) {
+      e.preventDefault();
+      return false;
+    }
+  });
+</script>
 
 </body>
 </html>
