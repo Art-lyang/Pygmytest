@@ -38,7 +38,7 @@ body {
   color: var(--brown-deep);
   min-height: 100vh;
   overflow-x: hidden;
-  padding-bottom: 36px; /* 하단 고정 저작권 바 높이만큼 여백 */
+  padding-bottom: 44px;
 }
 
 /* 배경 그라데이션 오버레이 (분위기용) */
@@ -641,7 +641,7 @@ body::after {
 
 
 /* ============================================================
-   9. CTA 카드 (카카오방 / 인스타 / 스마트스토어)
+   9. CTA 카드 (드길샵)
    ============================================================ */
 .cta-cards {
   display: flex;
@@ -668,15 +668,6 @@ body::after {
   box-shadow: 0 8px 24px var(--shadow);
 }
 
-/* 카카오 카드 */
-.cta-card.kakao { border-color: rgba(254, 229, 0, 0.4); }
-.cta-card.kakao:hover { border-color: #FEE500; background: rgba(254, 229, 0, 0.04); }
-
-/* 인스타 카드 */
-.cta-card.insta { border-color: rgba(225, 48, 108, 0.2); }
-.cta-card.insta:hover { border-color: rgba(225, 48, 108, 0.4); background: rgba(225, 48, 108, 0.02); }
-
-/* 스마트스토어 카드 */
 .cta-card.store { border-color: rgba(3, 199, 90, 0.25); }
 .cta-card.store:hover { border-color: rgba(3, 199, 90, 0.5); background: rgba(3, 199, 90, 0.02); }
 
@@ -691,8 +682,6 @@ body::after {
   font-size: 22px;
   flex-shrink: 0;
 }
-.cta-card.kakao .cta-icon { background: #FEE500; }
-.cta-card.insta .cta-icon { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
 .cta-card.store .cta-icon { background: #03C75A; }
 
 /* CTA 텍스트 영역 */
@@ -700,6 +689,159 @@ body::after {
 .cta-label   { font-size: 15px; font-weight: 700; color: var(--brown-deep); margin-bottom: 2px; }
 .cta-desc    { font-size: 12px; color: var(--brown-light); }
 .cta-arrow   { font-size: 16px; color: var(--brown-light); flex-shrink: 0; }
+
+
+/* ============================================================
+   9-1. 초보 사육 가이드 (케어시트 요약)
+   ============================================================ */
+.care-guide {
+  background: white;
+  border-radius: 24px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 16px var(--shadow);
+  border: 1px solid rgba(196, 136, 90, 0.15);
+  margin-bottom: 20px;
+}
+
+.care-title {
+  font-family: 'Gaegu', cursive;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--brown-deep);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.care-lead {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--brown-mid);
+  text-align: center;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed rgba(196, 136, 90, 0.3);
+}
+.care-lead i { font-style: italic; }
+
+/* 접히는 항목 */
+.care-item {
+  border: 1px solid rgba(196, 136, 90, 0.18);
+  border-radius: 14px;
+  margin-bottom: 9px;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.care-item summary {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 16px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--brown-deep);
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.2s;
+}
+.care-item summary::-webkit-details-marker { display: none; }
+.care-item summary::after {
+  content: '▾';
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--brown-light);
+  transition: transform 0.2s;
+}
+.care-item[open] summary::after { transform: rotate(180deg); }
+.care-item summary:hover { background: rgba(232, 164, 74, 0.07); }
+.care-ico { font-size: 17px; flex-shrink: 0; }
+
+.care-body {
+  padding: 4px 18px 18px;
+  background: white;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--brown-deep);
+}
+.care-body ul { margin: 6px 0; padding-left: 18px; }
+.care-body li { margin: 6px 0; }
+.care-body b { color: var(--brown-mid); }
+
+/* 수치 강조 박스 (온도·크기) */
+.care-spec {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 10px;
+}
+.care-spec > div {
+  flex: 1 1 130px;
+  background: linear-gradient(135deg, rgba(232, 164, 74, 0.12), rgba(90, 138, 60, 0.07));
+  border: 1px solid rgba(232, 164, 74, 0.25);
+  border-radius: 12px;
+  padding: 10px 12px;
+  text-align: center;
+}
+.care-spec span {
+  display: block;
+  font-size: 11px;
+  color: var(--brown-light);
+  margin-bottom: 3px;
+}
+.care-spec b {
+  font-size: 15px;
+  color: var(--brown-deep);
+  font-weight: 700;
+}
+
+/* 급여 금지 등 경고 박스 */
+.care-warn {
+  background: rgba(232, 137, 122, 0.08);
+  border: 1px solid rgba(232, 137, 122, 0.3);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin: 12px 0 8px;
+  font-size: 13px;
+}
+.care-warn > b { display: block; color: var(--blush); margin-bottom: 4px; }
+.care-warn ul { margin: 4px 0 0; padding-left: 16px; }
+
+/* 팁 문단 */
+.care-tip {
+  background: var(--cream);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--brown-mid);
+  margin-top: 10px;
+}
+
+/* 체크리스트 */
+.care-check { list-style: none; padding-left: 0 !important; }
+.care-check li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 13.5px;
+}
+.care-check li::before {
+  content: '✓';
+  position: absolute;
+  left: 2px;
+  color: var(--leaf);
+  font-weight: 700;
+}
+
+/* 출처·면책 */
+.care-src {
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: var(--brown-light);
+  text-align: center;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(196, 136, 90, 0.3);
+}
 
 
 /* ============================================================
@@ -821,63 +963,6 @@ body::after {
 
 
 /* ============================================================
-   14. 후킹 멘트 블록 (결과 화면 하단 랜덤 출력)
-   ============================================================ */
-.hook-message {
-  background: white;
-  border-radius: 20px;
-  padding: 22px 20px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 16px var(--shadow);
-  border: 1.5px solid rgba(232, 164, 74, 0.25);
-  text-align: center;
-  animation: slideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* 아이콘 이모지 */
-.hook-message .hook-icon {
-  font-size: 32px;
-  display: block;
-  margin-bottom: 10px;
-}
-
-/* 메인 후킹 문구 */
-.hook-message .hook-text {
-  font-family: 'Gaegu', cursive;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--brown-deep);
-  line-height: 1.5;
-  margin-bottom: 6px;
-}
-
-/* 보조 설명 문구 */
-.hook-message .hook-sub {
-  font-size: 13px;
-  color: var(--brown-light);
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-
-/* CTA 버튼 */
-.hook-message .hook-btn {
-  display: inline-block;
-  padding: 11px 24px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 700;
-  font-family: 'Noto Sans KR', sans-serif;
-  text-decoration: none;
-  transition: all 0.2s;
-  box-shadow: 0 4px 12px rgba(61, 31, 10, 0.12);
-}
-.hook-message .hook-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(61, 31, 10, 0.18);
-}
-
-
-/* ============================================================
    15. 결과 모프 이미지
    - JS에서 morph.image URL로 동적 삽입
    - 실제 사진 교체 시 script.js MORPHS 배열의 image 값만 바꾸면 됩니다
@@ -976,24 +1061,42 @@ a img, button img {
 
 
 /* ============================================================
-   18. 하단 고정 저작권 바
-   - 페이지 스크롤과 관계없이 항상 하단에 고정 표시
+   18. 펼쳐보는 저작권 안내
    ============================================================ */
-.copyright-bar {
+.copyright-notice {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 9998;
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+}
+
+.copyright-notice summary {
+  display: inline-block;
+  margin: 0 auto 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
   background: rgba(61, 31, 10, 0.88);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
   color: rgba(255, 255, 255, 0.85);
   font-size: 11px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 400;
-  text-align: center;
-  padding: 8px 16px;
+  cursor: pointer;
+  list-style: none;
+  box-shadow: 0 2px 8px rgba(61, 31, 10, 0.2);
+}
+
+.copyright-notice summary::-webkit-details-marker {
+  display: none;
+}
+
+.copyright-text {
+  padding: 9px 16px;
+  background: rgba(61, 31, 10, 0.92);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 11px;
   line-height: 1.5;
-  z-index: 9998;
   letter-spacing: 0.2px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }

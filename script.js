@@ -781,11 +781,11 @@ function showResult() {
     pied:         '#F5F0FF',
     oreo:         '#F0F0F0',
     dalmatian:    '#FFF8E8',
-    dust:        '#FFF8E8',
     mask:         '#EEF4F0',
     'high-white': '#F8F8FF',
     lucistic:     '#FFF5E0',
-    black:        '#2A2A2A'  // 블랙 모프만 다크 배경
+    dust:         '#F4F2EF',  // 더스트 - 은은한 회색 톤
+    black:        '#2A2A2A'   // 블랙 모프만 다크 배경
   };
 
   // 결과 헤더 배경 적용
@@ -854,83 +854,11 @@ function showResult() {
   // 공유 함수에서 사용할 수 있도록 전역에 저장
   window.currentMorph = morph;
 
-  // 후킹 멘트 랜덤 렌더
-  renderHookMessage();
-
   // 상단으로 스크롤
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 
-
-/* ============================================================
-   11-1. 후킹 멘트 (결과 화면 하단 랜덤 출력)
-   매 결과마다 6개 중 하나가 랜덤으로 표시됩니다.
-   ============================================================ */
-const HOOK_MESSAGES = [
-  {
-    text: "이 모프 실제로 어떻게 생겼는지 궁금하지 않아요?",
-    sub: "텍스트로는 다 못 담아요. 실물은 인스타에서 확인하세요 📷",
-    cta: "인스타 바로가기",
-    link: "https://www.instagram.com/__dragon_train?igsh=MXc0ZGpla2RtbDAyOA==",
-    type: "insta"
-  },
-  {
-    text: "결과가 신기했다면, 진짜 피그미다람쥐는 더 신기해요",
-    sub: "실물 영상이랑 사진 가득해요. 한번만 봐도 반해요 🐿",
-    cta: "실물 구경하기",
-    link: "https://www.instagram.com/__dragon_train?igsh=MXc0ZGpla2RtbDAyOA==",
-    type: "insta"
-  },
-  {
-    text: "구매 아니어도 괜찮아요. 궁금한 거 있으면 편하게 물어보세요 💬",
-    sub: "가격, 사육 난이도, 모프 차이… 뭐든 물어볼 수 있어요",
-    cta: "오픈채팅 입장하기",
-    link: "https://open.kakao.com/o/g6KVWGzb",
-    type: "kakao"
-  },
-
-  {
-    text: "이 모프… 실제로 키우면 어떨까 상상해봤나요?",
-    sub: "입양 전 궁금한 건 커뮤니티에서 경험자한테 바로 물어볼 수 있어요",
-    cta: "입양 고민 나누기",
-    link: "https://open.kakao.com/o/g6KVWGzb",
-    type: "kakao"
-  },
-  {
-    text: "텍스트로는 다 못 담아요. 실물은 인스타에서 확인하세요 📷",
-    sub: "직접 보면 테스트 결과가 왜 나왔는지 더 실감나요",
-    cta: "인스타 구경하기",
-    link: "https://www.instagram.com/__dragon_train?igsh=MXc0ZGpla2RtbDAyOA==",
-    type: "insta"
-  }
-];
-
-/* 후킹 멘트 렌더 함수 */
-function renderHookMessage() {
-  const el = document.getElementById('hook-message');
-  if (!el) return;
-
-  // 6개 중 랜덤 1개 선택
-  const msg = HOOK_MESSAGES[Math.floor(Math.random() * HOOK_MESSAGES.length)];
-
-  // 타입별 색상 설정
-  const isKakao = msg.type === 'kakao';
-  const btnBg    = isKakao ? '#FEE500' : 'linear-gradient(135deg, #f09433, #dc2743)';
-  const btnColor = isKakao ? '#3C1E1E' : 'white';
-  const iconEl   = isKakao ? '💬' : '📷';
-
-  el.innerHTML = `
-    <div class="hook-icon">${iconEl}</div>
-    <div class="hook-text">${msg.text}</div>
-    <div class="hook-sub">${msg.sub}</div>
-    <a href="${msg.link}" target="_blank" class="hook-btn"
-       style="background:${btnBg}; color:${btnColor};"
-       onclick="trackEvent('cta_click', { destination: 'hook_${msg.type}', label: '${msg.cta}' })">
-      ${msg.cta} →
-    </a>
-  `;
-}
 
 /* ============================================================
    12. 카카오톡 공유
