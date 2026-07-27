@@ -270,11 +270,15 @@
 
 
       <div class="cta-cards">
+        <!-- 드길샵 이동 버튼
+             로고 파일: img/logo-dgil.png  (가로로 긴 워드마크, 배경 투명 PNG 권장)
+             로고가 없거나 로드 실패하면 아래 텍스트 버전으로 자동 대체됩니다. -->
         <a href="https://dgil.shop/" target="_blank" rel="noopener noreferrer" class="cta-card store"
            onclick="trackEvent('cta_click', { destination: 'dgil_shop', morph_name: window.currentMorph ? window.currentMorph.name : 'unknown' })">
-          <div class="cta-icon" style="color:white; font-size:20px;">🛒</div>
+          <img src="img/logo-dgil.png" alt="드길샵" class="cta-logo"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.cta-fallback').style.display='';">
           <div class="cta-text">
-            <div class="cta-label">드길샵</div>
+            <div class="cta-label cta-fallback" style="display:none">🛒 드길샵</div>
             <div class="cta-desc">분양 및 사육 용품을 드길샵에서 확인하세요</div>
           </div>
           <div class="cta-arrow">→</div>
