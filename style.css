@@ -1118,3 +1118,50 @@ a img, button img {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
+
+/* ============================================================
+   만든 곳으로 (RYANG STUDIO)
+   ------------------------------------------------------------
+   테스트만 검색으로 들어온 사람에게 다른 도구가 있다는 것을 알립니다.
+   결과 화면의 드길샵 CTA 와 경쟁하지 않도록 크기와 대비를 낮췄습니다.
+
+   .copyright-notice 가 position:fixed 로 화면 아래에 붙어 있어서,
+   그 높이만큼 아래 여백을 둡니다. 안 그러면 저작권 바가 이 링크를 덮습니다.
+   ============================================================ */
+.studio-link {
+  margin: 8px auto 64px;
+  padding: 0 20px;
+  text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.studio-link a {
+  display: inline-block;
+  padding: 11px 20px;
+  border: 1px solid rgba(123, 69, 33, 0.22);
+  border-radius: 999px;
+  background: var(--warm-white);
+  color: var(--brown-mid);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: border-color .15s, color .15s, transform .15s;
+}
+
+.studio-link a:hover {
+  border-color: var(--acorn);
+  color: var(--brown-deep);
+  transform: translateY(-1px);
+}
+
+.studio-sub {
+  margin-top: 7px;
+  font-size: 11px;
+  color: var(--brown-light);
+  line-height: 1.7;
+}
+
+@media (max-width: 400px) {
+  .studio-link a { font-size: 12px; padding: 10px 16px; }
+}
