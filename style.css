@@ -708,8 +708,9 @@ body::after {
   border-color: rgba(224, 118, 91, 0.55);
   background: rgba(224, 118, 91, 0.04);
 }
-.cta-card.studio .cta-icon {
-  background: linear-gradient(135deg, #fff1df, #ffd7cf);
+.studio-logo {
+  width: 104px;
+  height: 46px;
 }
 
 /* CTA 텍스트 영역 */

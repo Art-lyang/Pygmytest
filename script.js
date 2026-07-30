@@ -669,6 +669,7 @@ function startQuiz() {
   // 화면 전환
   document.getElementById('start-section').style.display = 'none';
   document.getElementById('quiz-section').style.display = 'block';
+  document.getElementById('studio-link').style.display = 'none';
 
   renderQuestion();
 }
