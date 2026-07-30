@@ -701,6 +701,16 @@ body::after {
   border-color: rgba(74, 42, 130, 0.45);
   background: rgba(74, 42, 130, 0.03);
 }
+.cta-card.studio {
+  border-color: rgba(224, 118, 91, 0.28);
+}
+.cta-card.studio:hover {
+  border-color: rgba(224, 118, 91, 0.55);
+  background: rgba(224, 118, 91, 0.04);
+}
+.cta-card.studio .cta-icon {
+  background: linear-gradient(135deg, #fff1df, #ffd7cf);
+}
 
 /* CTA 텍스트 영역 */
 .cta-text    { flex: 1; }
