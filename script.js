@@ -539,6 +539,9 @@ var currentQuestions = []; // 이번 회차에 뽑힌 10개 질문
 var currentIndex = 0;      // 현재 진행 중인 질문 인덱스
 var scores = {};           // 모프별 누적 점수 { morphId: number }
 var quizStartTime = null;  // 테스트 시작 시각 (소요 시간 측정용)
+const counterRpcBaseUrl = 'https://wjsljnwcbcudlvapxleh.supabase.co/rest/v1/rpc';
+const counterPublishableKey = 'sb_publishable_BaMS06IBYB4osIsJEq4gsQ_tOueZMRg';
+const counterStorageKey = 'pygmy-test-completion-counted-v1';
 
 
 
@@ -582,18 +585,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/* ============================================================
-   카운터 애니메이션
-   - base: 표시할 기준 숫자 (GA4 quiz_complete 수 확인 후 주기적으로 업데이트)
-   - extra: 매번 조금씩 다르게 보이게 하는 랜덤 범위 (1~15)
-   - 업데이트 방법: base 숫자만 실제 완료 수로 교체 후 깃허브 재업로드
-   ============================================================ */
-function animateCounter() {
+async function requestCounter(rpcName) {
+  const response = await fetch(`${counterRpcBaseUrl}/${rpcName}`, {
+    method: 'POST',
+    headers: {
+      apikey: counterPublishableKey,
+      'Content-Type': 'application/json'
+    },
+    body: '{}'
+  });
+
+  if (!response.ok) {
+    throw new Error(`Counter request failed with status ${response.status}`);
+  }
+
+  return Number(await response.json());
+}
+
+function animateCounterValue(target) {
   const el = document.getElementById('counter-num');
-  const base = 1000;                              // ← GA4 확인 후 이 숫자 업데이트
-  const extra = Math.floor(Math.random() * 15);  // 1000~1014 사이로 자연스럽게
-  const target = base + extra;
-  let current = target - 20;
+  let current = Math.max(0, target - 20);
 
   const timer = setInterval(() => {
     current += 1;
@@ -603,6 +614,27 @@ function animateCounter() {
       clearInterval(timer);
     }
   }, 50);
+}
+
+async function animateCounter() {
+  try {
+    const count = await requestCounter('get_pygmy_test_completion_count');
+    animateCounterValue(count);
+  } catch (error) {
+    console.warn('참여자 수를 불러오지 못했습니다.', error);
+  }
+}
+
+async function recordQuizCompletion() {
+  if (localStorage.getItem(counterStorageKey)) return;
+
+  try {
+    const count = await requestCounter('increment_pygmy_test_completion_count');
+    localStorage.setItem(counterStorageKey, 'true');
+    animateCounterValue(count);
+  } catch (error) {
+    console.warn('테스트 완료 수를 저장하지 못했습니다.', error);
+  }
 }
 
 
@@ -752,6 +784,7 @@ function showLoading() {
   trackEvent('quiz_complete', {
     time_spent_sec: elapsed  // GA4 탐색 보고서에서 평균 소요시간 확인 가능
   });
+  recordQuizCompletion();
 
   document.getElementById('quiz-section').style.display = 'none';
   document.getElementById('loading-section').style.display = 'block';
