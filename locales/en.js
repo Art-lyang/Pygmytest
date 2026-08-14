@@ -4,7 +4,7 @@ window.PYGMY_LOCALE={
     "한국어": "한국어",
     "내가 피그미다람쥐라면": "If I were an African pygmy dormouse,",
     "어떤 모프": "which morph",
-    "일까?": "would I be?",
+    "일까?": " would I be?",
     "랜덤 10문항으로 알아보는 나의 모프": "Discover your morph in 10 random questions",
     "다시 해도 매번 다른 질문이 나와요!": "Every retake brings a different set of questions!",
     "명이 테스트했어요": " people have taken the test",
@@ -459,6 +459,7 @@ window.PYGMY_LOCALE={
     "📋 공유 문구가 복사됐어요!": "📋 The shared phrase has been copied!",
     "{morph} 모프 이미지": "{morph} morph image",
     "피그미다람쥐 모프 테스트에서 결과 확인 👉": "Check the results from the Pygmy Squirrel Morph Test 👉",
-    "너도 테스트해봐 👉": "Test it too 👉"
+    "너도 테스트해봐 👉": "Test it too 👉",
+    "🐿 Pygmy Squirrel Morph Test": "🐿 African Pygmy Dormouse (Micro Squirrel)"
   }
 };

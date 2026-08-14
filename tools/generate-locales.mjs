@@ -8,30 +8,43 @@ const sourceScript = await readFile(path.join(root, 'script.js'), 'utf8');
 const locales = {
   en: {
     google: 'en', htmlLang: 'en', path: '/en/', label: 'English',
-    title: 'Pygmy Squirrel Morph Test | Which Morph Are You?',
-    description: 'Take a 10-question personality quiz to discover your African pygmy dormouse morph and read practical care tips.',
+    title: 'African Pygmy Dormouse Morph Test (Micro Squirrel)',
+    description: 'Discover your African Pygmy Dormouse morph in 10 questions. Also known as the Woodland Dormouse, African Dwarf Dormouse, or Micro Squirrel.',
+    keywords: 'African Pygmy Dormouse, Woodland Dormouse, African Dwarf Dormouse, Micro Squirrel, Graphiurus murinus, dormouse morph, pygmy dormouse care',
+    schemaName: 'African Pygmy Dormouse Morph Test',
+    schemaDescription: 'A 10-question morph quiz and care guide for the African Pygmy Dormouse, also known as the Woodland Dormouse or Micro Squirrel.',
     overrides: {
       '한국어': '한국어',
       '내가 피그미다람쥐라면': 'If I were an African pygmy dormouse,',
       '어떤 모프': 'which morph',
-      '일까?': 'would I be?',
+      '일까?': ' would I be?',
       '랜덤 10문항으로 알아보는 나의 모프': 'Discover your morph in 10 random questions',
       '다시 해도 매번 다른 질문이 나와요!': 'Every retake brings a different set of questions!',
       '명이 테스트했어요': ' people have taken the test',
       '✨ 10가지 결과 모프': '✨ 10 possible morph results',
-      '테스트 시작하기': 'Start the test'
+      '테스트 시작하기': 'Start the test',
+      '🐿 Pygmy Squirrel Morph Test': '🐿 African Pygmy Dormouse (Micro Squirrel)'
     }
   },
   ja: {
     google: 'ja', htmlLang: 'ja', path: '/ja/', label: '日本語',
-    title: 'ピグミーリスのモルフ診断 | あなたはどのモルフ？',
-    description: '10問の性格診断で、あなたにぴったりのアフリカヤマネのモルフを見つけ、飼育の基本も確認できます。',
-    overrides: { '한국어': '한국語' }
+    title: 'アフリカヤマネ（African Pygmy Dormouse）モルフ診断',
+    description: 'アフリカヤマネ（African Pygmy Dormouse／Graphiurus murinus）のモルフを10問で診断。飼育の基本も確認できます。',
+    keywords: 'アフリカヤマネ, African Pygmy Dormouse, Graphiurus murinus, モルフ, アフリカヤマネ 飼育, アフリカヤマネ 種類',
+    schemaName: 'アフリカヤマネのモルフ診断',
+    schemaDescription: 'アフリカヤマネ（African Pygmy Dormouse）のモルフを見つける10問の診断と飼育ガイドです。',
+    overrides: {
+      '한국어': '韓国語',
+      '🐿 Pygmy Squirrel Morph Test': '🐿 アフリカヤマネ（African Pygmy Dormouse）'
+    }
   },
   'zh-cn': {
     google: 'zh-CN', htmlLang: 'zh-CN', path: '/zh-cn/', label: '简体中文',
-    title: '非洲侏儒睡鼠花色测试 | 你是哪一种花色？',
-    description: '通过10道性格题找出最适合你的非洲侏儒睡鼠花色，并查看实用的饲养护理要点。',
+    title: '非洲睡鼠（非洲侏儒睡鼠）花色测试',
+    description: '通过10道题测试非洲睡鼠（非洲侏儒睡鼠／非洲林睡鼠，Graphiurus murinus）的花色，并查看实用饲养要点。',
+    keywords: '非洲睡鼠, 非洲侏儒睡鼠, 非洲林睡鼠, Graphiurus murinus, 睡鼠花色, 非洲睡鼠饲养, 非洲睡鼠种类',
+    schemaName: '非洲睡鼠花色测试',
+    schemaDescription: '非洲睡鼠（非洲侏儒睡鼠、非洲林睡鼠）的10道花色测试与实用饲养指南。',
     overrides: {
       '한국어': '韩语',
       '내가 피그미다람쥐라면': '如果我是非洲侏儒睡鼠，',
@@ -41,7 +54,8 @@ const locales = {
       '다시 해도 매번 다른 질문이 나와요!': '每次重测都会遇到不同的问题！',
       '명이 테스트했어요': ' 人已完成测试',
       '✨ 10가지 결과 모프': '✨ 10种花色结果',
-      '테스트 시작하기': '开始测试'
+      '테스트 시작하기': '开始测试',
+      '🐿 Pygmy Squirrel Morph Test': '🐿 非洲睡鼠（非洲侏儒睡鼠）'
     }
   }
 };
@@ -139,12 +153,15 @@ function localizeMetadata(html, locale, config) {
     .replace('<html lang="ko">', `<html lang="${config.htmlLang}">`)
     .replace(/<title>[^<]*<\/title>/, `<title>${config.title}</title>`)
     .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${config.description}">`)
+    .replace(/<meta name="keywords"\s+content="[^"]*">/, `<meta name="keywords" content="${config.keywords}">`)
     .replace(/<meta property="og:title"\s+content="[^"]*">/, `<meta property="og:title" content="${config.title}">`)
     .replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${config.description}">`)
     .replace(/<meta property="og:url"\s+content="[^"]*">/, `<meta property="og:url" content="${canonical}">`)
     .replace(/<meta name="twitter:title"\s+content="[^"]*">/, `<meta name="twitter:title" content="${config.title}">`)
     .replace(/<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${config.description}">`)
     .replace(/<link rel="canonical"\s+href="[^"]*">/, `<link rel="canonical" href="${canonical}">`)
+    .replace(/"name": "[^"]*",/, `"name": "${config.schemaName}",`)
+    .replace(/"description": "[^"]*",/, `"description": "${config.schemaDescription}",`)
     .replace('"inLanguage": "ko-KR"', `"inLanguage": "${config.htmlLang}"`)
     .replace(/ aria-current="page"/g, '')
     .replace(`href="${config.path}"`, `href="${config.path}" aria-current="page"`)

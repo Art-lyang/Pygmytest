@@ -17,6 +17,9 @@ for (const variant of variants) {
     assert.match(html, new RegExp(`<html lang="${variant.lang}">`));
     assert.match(html, /<title>[^<]+<\/title>/);
     assert.match(html, /<meta name="description" content="[^"]+">/);
+    if (variant.lang !== 'ko') {
+      assert.match(html, /<meta name="keywords" content="[^"]*Graphiurus murinus[^"]*">/);
+    }
     assert.ok(html.includes(`<link rel="canonical" href="${variant.canonical}`));
     assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 5);
   });
