@@ -3,6 +3,8 @@
    pygmytest.com
    ============================================================ */
 
+const translate = window.PygmyI18n ? window.PygmyI18n.translate : value => value;
+
 
 /* ============================================================
    1. 모프 데이터
@@ -12,9 +14,9 @@ const MORPHS = [
   {
     id: 'normal',
     // ↓ 모프 그리드용 일러스트 아이콘 이미지
-    icon: 'img/icon-normal.png',
+    icon: '/img/icon-normal.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
-    image: 'img/img-normal.jpg',
+    image: '/img/img-normal.jpg',
     name: '노말',
     nameEn: 'Normal',
     emoji: '🌿',
@@ -26,9 +28,9 @@ const MORPHS = [
   },
   {
     id: 'ringtail',
-    icon: 'img/icon-ringtail.png',
+    icon: '/img/icon-ringtail.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
-    image: 'img/img-ringtail.jpg',
+    image: '/img/img-ringtail.jpg',
     name: '링테일',
     nameEn: 'Ring Tail',
     emoji: '🌀',
@@ -40,9 +42,9 @@ const MORPHS = [
   },
   {
     id: 'pied',
-    icon: 'img/icon-pied.png',
+    icon: '/img/icon-pied.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
-    image: 'img/img-pied.jpg',
+    image: '/img/img-pied.jpg',
     name: '파이드',
     nameEn: 'Pied',
     emoji: '🤍',
@@ -54,9 +56,9 @@ const MORPHS = [
   },
   {
     id: 'oreo',
-    icon: 'img/icon-oreo.png',
+    icon: '/img/icon-oreo.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
-    image: 'img/img-oreo.jpg',
+    image: '/img/img-oreo.jpg',
     name: '오레오',
     nameEn: 'Oreo',
     emoji: '🍪',
@@ -68,9 +70,9 @@ const MORPHS = [
   },
   {
     id: 'dalmatian',
-    icon: 'img/icon-dalmatian.png',
+    icon: '/img/icon-dalmatian.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
-    image: 'img/img-dalmatian.jpg',
+    image: '/img/img-dalmatian.jpg',
     name: '달마시안',
     nameEn: 'Dalmatian',
     emoji: '✨',
@@ -82,9 +84,9 @@ const MORPHS = [
   },
   {
     id: 'mask',
-    icon: 'img/icon-mask.png',
+    icon: '/img/icon-mask.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
-    image: 'img/img-mask.jpg',
+    image: '/img/img-mask.jpg',
     name: '마스크',
     nameEn: 'Mask',
     emoji: '🎭',
@@ -96,9 +98,9 @@ const MORPHS = [
   },
   {
     id: 'high-white',
-    icon: 'img/icon-high-white.png',
+    icon: '/img/icon-high-white.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
-    image: 'img/img-high-white.jpg',
+    image: '/img/img-high-white.jpg',
     name: '하이화이트',
     nameEn: 'High White',
     emoji: '☁️',
@@ -110,9 +112,9 @@ const MORPHS = [
   },
   {
     id: 'lucistic',
-    icon: 'img/icon-lucistic.png',
+    icon: '/img/icon-lucistic.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
-    image: 'img/img-lucistic.jpg',
+    image: '/img/img-lucistic.jpg',
     name: '루시스틱',
     nameEn: 'Lucistic',
     emoji: '🌕',
@@ -125,9 +127,9 @@ const MORPHS = [
   {
     id: 'dust',
     // ↓ 더스트 모프 - 달마시안 캐릭터 아이콘 공유
-    icon: 'img/icon-dust.png',
+    icon: '/img/icon-dust.png',
     // ↓ 실사 결과 이미지
-    image: 'img/img-dust.jpg',
+    image: '/img/img-dust.jpg',
     name: '더스트',
     nameEn: 'Dust',
     emoji: '🌫️',
@@ -139,9 +141,9 @@ const MORPHS = [
   },
   {
     id: 'black',
-    icon: 'img/icon-black.png',
+    icon: '/img/icon-black.png',
     // ↓ 실제 모프 사진으로 교체하세요 (권장 400×300px 이상)
-    image: 'img/img-black.jpg',
+    image: '/img/img-black.jpg',
     name: '블랙',
     nameEn: 'Black',
     emoji: '🖤',
@@ -649,11 +651,11 @@ function renderMorphGrid() {
     `<div class="morph-chip">
       ${m.icon
         ? `<div class="morph-chip-img-wrap">
-             <img src="${m.icon}" alt="${m.name}" class="morph-chip-img" onerror="this.parentElement.style.display='none'">
+             <img src="${m.icon}" alt="${translate(m.name)}" class="morph-chip-img" onerror="this.parentElement.style.display='none'">
            </div>`
         : `<span class="emoji">${m.emoji}</span>`
       }
-      <span class="morph-chip-name">${m.name}</span>
+      <span class="morph-chip-name">${translate(m.name)}</span>
     </div>`
   ).join('');
 }
@@ -717,7 +719,7 @@ function renderQuestion() {
 
   // 질문 번호 / 본문 / 진행도 텍스트 업데이트
   document.getElementById('q-num').textContent = `Q${currentIndex + 1}`;
-  document.getElementById('q-text').textContent = q.text;
+  document.getElementById('q-text').textContent = translate(q.text);
   document.getElementById('progress-count').textContent = `${currentIndex + 1} / 10`;
 
   // 프로그레스 바 너비 업데이트 (10% 단위)
@@ -732,7 +734,7 @@ function renderQuestion() {
   shuffledOptions.forEach(opt => {
     const btn = document.createElement('button');
     btn.className = 'option-btn';
-    btn.textContent = opt.text;
+    btn.textContent = translate(opt.text);
     btn.addEventListener('click', () => selectOption(btn, opt.scores, optionsEl));
     optionsEl.appendChild(btn);
   });
@@ -844,13 +846,13 @@ function showResult() {
   // 결과 화면 상단 아이콘 - icon 이미지가 있으면 이미지로, 없으면 이모지로 표시
   const resEmojiEl = document.getElementById('res-emoji');
   if (morph.icon) {
-    resEmojiEl.innerHTML = `<img src="${morph.icon}" alt="${morph.name}" class="result-icon-img" onerror="this.parentElement.textContent='${morph.emoji}'">`;
+    resEmojiEl.innerHTML = `<img src="${morph.icon}" alt="${translate(morph.name)}" class="result-icon-img" onerror="this.parentElement.textContent='${morph.emoji}'">`;
   } else {
     resEmojiEl.textContent = morph.emoji;
   }
-  document.getElementById('res-name').textContent     = morph.name + ' 모프';
+  document.getElementById('res-name').textContent     = translate('{morph} 모프').replace('{morph}', translate(morph.name));
   document.getElementById('res-name-en').textContent  = morph.nameEn + ' Morph';
-  document.getElementById('res-tagline').textContent  = morph.tagline;
+  document.getElementById('res-tagline').textContent  = translate(morph.tagline);
   // 모프 이미지 렌더링
   // morph.image에 실제 사진 URL이 있을 경우 표시, 없으면 이모지 영역만 표시
   const imgEl = document.getElementById('res-image');
@@ -858,10 +860,10 @@ function showResult() {
     if (morph.image) {
       imgEl.innerHTML = `
         <img src="${morph.image}"
-             alt="${morph.name} 모프 이미지"
+             alt="${translate('{morph} 모프 이미지').replace('{morph}', translate(morph.name))}"
              onerror="this.parentElement.style.display='none'"
              loading="lazy">
-        <div class="res-image-caption">${morph.name} 모프</div>
+        <div class="res-image-caption">${translate('{morph} 모프').replace('{morph}', translate(morph.name))}</div>
       `;
       // ↑ onerror: 이미지 로드 실패 시 영역 자동 숨김
     } else {
@@ -869,14 +871,14 @@ function showResult() {
     }
   }
 
-  document.getElementById('res-desc').textContent     = morph.desc;
-  document.getElementById('res-why').textContent      = morph.why;
-  document.getElementById('res-compat').textContent   = morph.compat;
+  document.getElementById('res-desc').textContent     = translate(morph.desc);
+  document.getElementById('res-why').textContent      = translate(morph.why);
+  document.getElementById('res-compat').textContent   = translate(morph.compat);
 
   // 특징 칩 렌더
   const traitsEl = document.getElementById('res-traits');
   traitsEl.innerHTML = morph.traits
-    .map(t => `<span class="trait-chip">${t}</span>`)
+    .map(trait => `<span class="trait-chip">${translate(trait)}</span>`)
     .join('');
 
   // GA4: 결과 모프 확인 이벤트 (어떤 모프가 많이 나오는지 파악 가능)
@@ -912,25 +914,28 @@ function shareKakao() {
 
     // 모프별 이미지 URL 생성
     // ※ pygmytest.com 도메인 기준 절대경로로 변환 (카카오 크롤러는 절대경로 필요)
-    const morphImageUrl = `https://pygmytest.com/${morph.image}`;
+    const morphImageUrl = new URL(morph.image, window.location.origin).href;
+    const pageUrl = window.location.href.split('#')[0].split('?')[0];
 
     Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
-        title: `나는 ${morph.name} 모프! ${morph.emoji}`,
-        description: `${morph.tagline}\n피그미다람쥐 모프 테스트에서 결과 확인 👉`,
+        title: translate('나는 {morph} 모프! {emoji}')
+          .replace('{morph}', translate(morph.name))
+          .replace('{emoji}', morph.emoji),
+        description: `${translate(morph.tagline)}\n${translate('피그미다람쥐 모프 테스트에서 결과 확인 👉')}`,
         imageUrl: morphImageUrl, // 모프별 실제 사진으로 표시
         link: {
-          mobileWebUrl: 'https://pygmytest.com',
-          webUrl: 'https://pygmytest.com',
+          mobileWebUrl: pageUrl,
+          webUrl: pageUrl,
         },
       },
       buttons: [
         {
-          title: '나도 테스트하기',
+          title: translate('나도 테스트하기'),
           link: {
-            mobileWebUrl: 'https://pygmytest.com',
-            webUrl: 'https://pygmytest.com',
+            mobileWebUrl: pageUrl,
+            webUrl: pageUrl,
           },
         },
       ],
@@ -955,13 +960,18 @@ function copyLink() {
   trackEvent('share_link_copy', {
     morph_name: morph ? morph.name : 'unknown'
   });
-  let text = `나는 피그미다람쥐 ${morph ? morph.name + ' 모프! ' + morph.emoji : ''}`;
-  text += `\n${morph ? morph.tagline : ''}\n\n너도 테스트해봐 👉 https://pygmytest.com`;
+  const pageUrl = window.location.href.split('#')[0].split('?')[0];
+  let text = morph
+    ? translate('나는 피그미다람쥐 {morph} 모프! {emoji}')
+      .replace('{morph}', translate(morph.name))
+      .replace('{emoji}', morph.emoji)
+    : translate('피그미다람쥐 모프 테스트');
+  text += `\n${morph ? translate(morph.tagline) : ''}\n\n${translate('너도 테스트해봐 👉')} ${pageUrl}`;
 
   if (navigator.clipboard) {
     // 최신 브라우저 (Clipboard API)
     navigator.clipboard.writeText(text).then(() => {
-      showToast('📋 공유 문구가 복사됐어요!');
+      showToast(translate('📋 공유 문구가 복사됐어요!'));
     });
   } else {
     // 구형 브라우저 폴백 (execCommand)
@@ -971,7 +981,7 @@ function copyLink() {
     ta.select();
     document.execCommand('copy');
     document.body.removeChild(ta);
-    showToast('📋 공유 문구가 복사됐어요!');
+    showToast(translate('📋 공유 문구가 복사됐어요!'));
   }
 }
 

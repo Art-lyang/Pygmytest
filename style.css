@@ -73,6 +73,68 @@ body::after {
   z-index: 1;
 }
 
+.language-switcher {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: max-content;
+  max-width: calc(100% - 24px);
+  margin: 14px auto 0;
+  padding: 5px;
+  border: 1px solid rgba(141, 81, 39, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 252, 247, 0.92);
+  box-shadow: 0 7px 22px rgba(91, 49, 24, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.language-switcher .language-icon {
+  padding: 0 5px 0 7px;
+  font-size: 14px;
+}
+
+.language-switcher a {
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: #8c684f;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+
+.language-switcher a:hover {
+  color: #5a2f1d;
+  background: #fff2e5;
+  transform: translateY(-1px);
+}
+
+.language-switcher a[aria-current="page"] {
+  color: #fff;
+  background: #d96f32;
+  box-shadow: 0 3px 9px rgba(217, 111, 50, 0.25);
+}
+
+@media (max-width: 420px) {
+  .language-switcher {
+    gap: 2px;
+  }
+
+  .language-switcher .language-icon {
+    display: none;
+  }
+
+  .language-switcher a {
+    padding-inline: 8px;
+    font-size: 11px;
+  }
+}
+
 
 /* ============================================================
    3. 헤더 & 시작 화면

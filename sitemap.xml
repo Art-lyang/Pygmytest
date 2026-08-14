@@ -1,9 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://pygmytest.com</loc>
-    <lastmod>2026-03-16</lastmod>
+    <loc>https://pygmytest.com/</loc>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://pygmytest.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pygmytest.com/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://pygmytest.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://pygmytest.com/zh-cn/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pygmytest.com/" />
+  </url>
+  <url>
+    <loc>https://pygmytest.com/en/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://pygmytest.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pygmytest.com/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://pygmytest.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://pygmytest.com/zh-cn/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pygmytest.com/" />
+  </url>
+  <url>
+    <loc>https://pygmytest.com/ja/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://pygmytest.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pygmytest.com/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://pygmytest.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://pygmytest.com/zh-cn/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pygmytest.com/" />
+  </url>
+  <url>
+    <loc>https://pygmytest.com/zh-cn/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://pygmytest.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pygmytest.com/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://pygmytest.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://pygmytest.com/zh-cn/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pygmytest.com/" />
   </url>
 </urlset>
