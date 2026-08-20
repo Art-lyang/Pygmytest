@@ -1,0 +1,20 @@
+/* Final hub polish shared by desktop and mobile. */
+.brand-mark {
+  font-size: 0;
+  background-image: url('/img/icon-normal.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 82% auto;
+}
+
+.test-card.is-live:not(.test-card-featured) {
+  border-color: rgba(217, 111, 50, 0.22);
+  background: rgba(255, 253, 249, 0.96);
+}
+
+@media (max-width: 680px) {
+  .test-card.is-live:focus-within {
+    border-color: rgba(217, 111, 50, 0.42);
+    box-shadow: 0 12px 28px rgba(78, 43, 20, 0.13);
+  }
+}
