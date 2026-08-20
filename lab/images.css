@@ -1,0 +1,107 @@
+/* ============================================================
+   Generated pygmy test card artwork
+   Sprite layout: 3 columns × 2 rows
+   ============================================================ */
+
+.card-visual {
+  --sprite-x: -16.6667%;
+  --sprite-y: -25%;
+  isolation: isolate;
+  background-color: #ead9c8;
+}
+
+.card-visual::before {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(48, 27, 15, 0.08));
+  opacity: 1;
+}
+
+.card-visual::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  height: 200%;
+  width: auto;
+  aspect-ratio: 3 / 2;
+  background-image: url('/lab/img/test-card-sprite.webp');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  transform: translate(var(--sprite-x), var(--sprite-y)) scale(1.012);
+  transform-origin: center;
+  transition: transform 0.32s ease, filter 0.32s ease;
+  will-change: transform;
+}
+
+.card-visual > * {
+  display: none;
+}
+
+.test-card:hover .card-visual::after {
+  transform: translate(var(--sprite-x), var(--sprite-y)) scale(1.045);
+  filter: saturate(1.035) contrast(1.015);
+}
+
+.visual-morph {
+  --sprite-x: -16.6667%;
+  --sprite-y: -25%;
+  background-color: #d97b42;
+}
+
+.visual-keeper {
+  --sprite-x: -50%;
+  --sprite-y: -25%;
+  background-color: #f1ba72;
+}
+
+.visual-personality {
+  --sprite-x: -83.3333%;
+  --sprite-y: -25%;
+  background-color: #b79bcf;
+}
+
+.visual-compatibility {
+  --sprite-x: -16.6667%;
+  --sprite-y: -75%;
+  background-color: #e6abb5;
+}
+
+.visual-readiness {
+  --sprite-x: -50%;
+  --sprite-y: -75%;
+  background-color: #d4a760;
+}
+
+.visual-behavior {
+  --sprite-x: -83.3333%;
+  --sprite-y: -75%;
+  background-color: #9d7bc1;
+}
+
+/* The featured card is wider than it is tall, so size the square tile by width. */
+.test-card-featured .card-visual::after {
+  width: 300%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .test-card-featured .card-visual::after {
+    width: auto;
+    height: 200%;
+  }
+}
+
+@media (max-width: 680px) {
+  .card-visual::after,
+  .test-card-featured .card-visual::after {
+    width: 300%;
+    height: auto;
+  }
+
+  .test-card:hover .card-visual::after {
+    transform: translate(var(--sprite-x), var(--sprite-y)) scale(1.025);
+  }
+}
