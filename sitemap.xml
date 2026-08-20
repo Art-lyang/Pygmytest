@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://pygmytest.com/</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ko-KR" href="https://pygmytest.com/" />
@@ -11,6 +11,18 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://pygmytest.com/ja/" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://pygmytest.com/zh-cn/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pygmytest.com/" />
+  </url>
+  <url>
+    <loc>https://pygmytest.com/lab/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://pygmytest.com/keeper/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
   </url>
   <url>
     <loc>https://pygmytest.com/en/</loc>
