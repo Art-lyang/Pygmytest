@@ -9,7 +9,8 @@ test('Given the keeper question pool, when its mix is inspected, then it include
     category === 'fun' || category === 'personality'
   );
 
-  assert.ok(engagingQuestions.length >= 12);
+  assert.equal(questionModule.QUESTIONS.length, 52);
+  assert.equal(engagingQuestions.length, 50);
 });
 
 test('Given a new play, when twelve questions are selected, then only one or two are carelog prompts', () => {
@@ -36,4 +37,6 @@ test('Given localized keeper pages, when question sources are collected, then th
   const generator = await readFile(new URL('../tools/generate-locales.mjs', import.meta.url), 'utf8');
 
   assert.match(generator, /questions-d\.js/);
+  assert.match(generator, /questions-e\.js/);
+  assert.match(generator, /questions-f\.js/);
 });

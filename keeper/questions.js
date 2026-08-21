@@ -2,6 +2,8 @@ import { QUESTIONS_A } from './questions-a.js';
 import { QUESTIONS_B } from './questions-b.js';
 import { QUESTIONS_C } from './questions-c.js';
 import { QUESTIONS_D } from './questions-d.js';
+import { QUESTIONS_E } from './questions-e.js';
+import { QUESTIONS_F } from './questions-f.js';
 
 const LEGACY_QUESTIONS = [...QUESTIONS_A, ...QUESTIONS_B, ...QUESTIONS_C];
 const CARELOG_INDEXES = new Set([16, 21]);
@@ -15,7 +17,9 @@ export const QUESTIONS = [
       ? 'carelog'
       : FUN_INDEXES.has(index) ? 'fun' : 'personality'
   })),
-  ...QUESTIONS_D
+  ...QUESTIONS_D,
+  ...QUESTIONS_E,
+  ...QUESTIONS_F
 ];
 
 function shuffle(items, random) {
