@@ -49,7 +49,7 @@ const locales = {
       '다정한 교감형 집사': 'Gentle Companion',
       '기록형 데이터 집사': 'Care Recorder',
       '자연주의형 집사': 'Naturalistic Keeper',
-      '브리딩 전략가 집사': 'Breeding Strategist',
+      '든든한 계획형 집사': 'Reliable Care Planner',
       '피그미를 대하는 나만의 방식': 'My Own Way of Caring for Pygmy Dormice',
       '가볍게 즐기는 성향 테스트부터 실제 사육에 도움이 되는 준비도 점검까지. 하나씩 새로운 피그미 테스트를 공개합니다.': 'From lighthearted personality quizzes to practical care-readiness checks, discover a growing collection of African pygmy dormouse tests.',
       '공개된 테스트': 'Available Tests', '준비 중인 테스트': 'Coming Soon',
@@ -57,7 +57,7 @@ const locales = {
       '피그미가 평소와 다르게 행동할 때 무엇부터 확인하나요? 12개의 생활형 질문으로 나의 관찰·환경·교감·기록 성향을 알아봅니다.': 'When an African pygmy dormouse behaves differently, what do you check first? Explore your observation, habitat, bonding, and record-keeping style through 12 practical questions.',
       '개 질문': ' questions', '가지 결과': ' results',
       '관찰형': 'Observant', '환경형': 'Habitat', '교감형': 'Companion',
-      '기록형': 'Recorder', '자율형': 'Naturalist', '전략형': 'Strategist'
+      '기록형': 'Recorder', '자율형': 'Naturalist', '계획형': 'Planner'
     },
     blockOverrides: {
       [careLeadSource]: 'The African pygmy dormouse (<i>Graphiurus murinus</i>) is manageable even for first-time keepers when <b>temperature and diet are set correctly</b>. In captivity, its average lifespan is about <b>6 years</b>.',
@@ -90,10 +90,10 @@ const locales = {
       '다정한 교감형 집사': 'ふれあい重視タイプ',
       '기록형 데이터 집사': '記録管理タイプ',
       '자연주의형 집사': 'ナチュラル飼育タイプ',
-      '브리딩 전략가 집사': 'ブリーディング戦略家',
+      '든든한 계획형 집사': 'しっかり計画タイプ',
       '피그미가 평소와 다르게 행동할 때 무엇부터 확인하나요? 12개의 생활형 질문으로 나의 관찰·환경·교감·기록 성향을 알아봅니다.': 'アフリカヤマネがいつもと違う行動をしたとき、最初に何を確認しますか？12の実践的な質問から、観察・環境・ふれあい・記録の傾向を確認します。',
       '관찰형': '観察', '환경형': '環境', '교감형': 'ふれあい',
-      '기록형': '記録', '자율형': '自然', '전략형': '戦略'
+      '기록형': '記録', '자율형': '自然', '계획형': '計画'
     },
     blockOverrides: {
       [careLeadSource]: 'アフリカヤマネ（<i>Graphiurus murinus</i>）は、<b>温度と食事を適切に管理すれば</b>、初心者でも飼育できます。飼育下での平均寿命は約<b>6年</b>です。',
@@ -134,10 +134,10 @@ const locales = {
       '다정한 교감형 집사': '互动陪伴型',
       '기록형 데이터 집사': '记录管理型',
       '자연주의형 집사': '自然照护型',
-      '브리딩 전략가 집사': '繁育规划型',
+      '든든한 계획형 집사': '稳健规划型饲养者',
       '피그미가 평소와 다르게 행동할 때 무엇부터 확인하나요? 12개의 생활형 질문으로 나의 관찰·환경·교감·기록 성향을 알아봅니다.': '当非洲侏儒睡鼠的行为与平时不同时，你会先检查什么？通过12道生活化问题了解你的观察、环境、互动和记录倾向。',
       '관찰형': '观察', '환경형': '环境', '교감형': '互动',
-      '기록형': '记录', '자율형': '自然', '전략형': '规划'
+      '기록형': '记录', '자율형': '自然', '계획형': '规划'
     },
     blockOverrides: {
       [careLeadSource]: '非洲侏儒睡鼠（<i>Graphiurus murinus</i>）只要<b>妥善控制温度并合理喂食</b>，新手也可以饲养。人工饲养条件下的平均寿命约为<b>6年</b>。',

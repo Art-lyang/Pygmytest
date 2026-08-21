@@ -40,3 +40,12 @@ test('Given localized keeper pages, when question sources are collected, then th
   assert.match(generator, /questions-e\.js/);
   assert.match(generator, /questions-f\.js/);
 });
+
+test('Given a companion-focused keeper test, when its questions and results are read, then they do not assume breeding or pedigree management', async () => {
+  const sourceFiles = ['questions-a.js', 'questions-b.js', 'questions-c.js', 'types.js', 'index.html'];
+  const sources = await Promise.all(sourceFiles.map(file =>
+    readFile(new URL(`../keeper/${file}`, import.meta.url), 'utf8')
+  ));
+
+  assert.doesNotMatch(sources.join('\n'), /브리딩|혈통|번식|후대|해츨링/);
+});

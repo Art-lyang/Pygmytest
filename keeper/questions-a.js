@@ -73,7 +73,7 @@ export const QUESTIONS_A = [
       {"text":"출처와 근거, 실제 관찰 조건을 비교한다.","scores":{"observer":3,"recorder":2,"strategist":1}},
       {"text":"내 개체 기록과 환경에서 어느 쪽이 맞는지 확인한다.","scores":{"recorder":3,"observer":2,"architect":1}},
       {"text":"안전 범위가 더 넓고 위험이 적은 방법부터 적용한다.","scores":{"architect":3,"naturalist":2,"observer":1}},
-      {"text":"브리더·혈통·사육 조건 차이까지 나눠서 본다.","scores":{"strategist":3,"observer":2,"recorder":1}}
+      {"text":"개체의 나이와 환경, 생활 조건 차이까지 나눠서 본다.","scores":{"strategist":3,"observer":2,"recorder":1}}
     ]
   },
   {
