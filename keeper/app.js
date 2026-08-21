@@ -1,5 +1,5 @@
 import { TYPE_ORDER, ICONS, TYPES } from './types.js';
-import { QUESTIONS } from './questions.js';
+import { QUESTIONS, selectQuestions } from './questions.js';
 
 let activeQuestions = [];
 let currentIndex = 0;
@@ -43,7 +43,7 @@ function renderPreview() {
   }).join('');
 }
 function startQuiz() {
-  activeQuestions = shuffle(QUESTIONS).slice(0, 12);
+  activeQuestions = selectQuestions(QUESTIONS);
   currentIndex = 0;
   scores = createEmptyScores();
   currentResultId = null;

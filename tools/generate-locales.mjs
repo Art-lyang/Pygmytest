@@ -7,7 +7,7 @@ const sourceScript = await readFile(path.join(root, 'script.js'), 'utf8');
 const labHtml = await readFile(path.join(root, 'lab', 'index.html'), 'utf8');
 const keeperHtml = await readFile(path.join(root, 'keeper', 'index.html'), 'utf8');
 const keeperScripts = await Promise.all([
-  'app.js', 'types.js', 'questions-a.js', 'questions-b.js', 'questions-c.js'
+  'app.js', 'types.js', 'questions-a.js', 'questions-b.js', 'questions-c.js', 'questions-d.js'
 ].map(file => readFile(path.join(root, 'keeper', file), 'utf8')));
 
 const careLeadSource = '피그미다람쥐(아프리카난쟁이겨울잠쥐, <i>Graphiurus murinus</i>)는 <b>온도와 먹이만 잘 맞춰주면</b> 초보자도 충분히 키울 수 있어요. 사육 환경에서 평균 <b>6년</b> 정도 함께합니다.';
