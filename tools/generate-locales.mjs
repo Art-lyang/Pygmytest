@@ -5,6 +5,8 @@ const root = path.resolve(import.meta.dirname, '..');
 const sourceHtml = await readFile(path.join(root, 'index.html'), 'utf8');
 const sourceScript = await readFile(path.join(root, 'script.js'), 'utf8');
 
+const careLeadSource = '피그미다람쥐(아프리카난쟁이겨울잠쥐, <i>Graphiurus murinus</i>)는 <b>온도와 먹이만 잘 맞춰주면</b> 초보자도 충분히 키울 수 있어요. 사육 환경에서 평균 <b>6년</b> 정도 함께합니다.';
+
 const locales = {
   en: {
     google: 'en', htmlLang: 'en', path: '/en/', label: 'English',
@@ -24,6 +26,9 @@ const locales = {
       '✨ 10가지 결과 모프': '✨ 10 possible morph results',
       '테스트 시작하기': 'Start the test',
       '🐿 Pygmy Squirrel Morph Test': '🐿 African Pygmy Dormouse (Micro Squirrel)'
+    },
+    blockOverrides: {
+      [careLeadSource]: 'The African pygmy dormouse (<i>Graphiurus murinus</i>) is manageable even for first-time keepers when <b>temperature and diet are set correctly</b>. In captivity, its average lifespan is about <b>6 years</b>.'
     }
   },
   ja: {
@@ -36,6 +41,9 @@ const locales = {
     overrides: {
       '한국어': '韓国語',
       '🐿 Pygmy Squirrel Morph Test': '🐿 アフリカヤマネ（African Pygmy Dormouse）'
+    },
+    blockOverrides: {
+      [careLeadSource]: 'アフリカヤマネ（<i>Graphiurus murinus</i>）は、<b>温度と食事を適切に管理すれば</b>、初心者でも飼育できます。飼育下での平均寿命は約<b>6年</b>です。'
     }
   },
   'zh-cn': {
@@ -56,6 +64,9 @@ const locales = {
       '✨ 10가지 결과 모프': '✨ 10种花色结果',
       '테스트 시작하기': '开始测试',
       '🐿 Pygmy Squirrel Morph Test': '🐿 非洲睡鼠（非洲侏儒睡鼠）'
+    },
+    blockOverrides: {
+      [careLeadSource]: '非洲侏儒睡鼠（<i>Graphiurus murinus</i>）只要<b>妥善控制温度并合理喂食</b>，新手也可以饲养。人工饲养条件下的平均寿命约为<b>6年</b>。'
     }
   }
 };
@@ -68,6 +79,17 @@ function extractHtmlText(html) {
     if (value && !/[{};]/.test(value)) values.push(value);
   }
   return values;
+}
+
+function normalizeHtml(value) {
+  return value.replace(/\s+/g, ' ').trim();
+}
+
+function extractCareBlocks(html) {
+  const section = html.match(/<section class="care-guide">[\s\S]*?<\/section>/i)?.[0] || '';
+  return [...section.matchAll(/<(h2|p|summary|li)\b[^>]*>([\s\S]*?)<\/\1>/gi)]
+    .map(match => normalizeHtml(match[2]))
+    .filter(value => /[가-힣]/.test(value));
 }
 
 function extractScriptStrings(script) {
@@ -131,6 +153,13 @@ function replaceTextNodes(html, messages) {
   });
 }
 
+function replaceCareBlocks(html, blocks) {
+  return html.replace(/(<(h2|p|summary|li)\b[^>]*>)([\s\S]*?)(<\/\2>)/gi, (whole, open, tag, inner, close) => {
+    const translated = blocks[normalizeHtml(inner)];
+    return translated ? `${open}${translated}${close}` : whole;
+  });
+}
+
 function replaceQuotedStrings(html, messages) {
   return Object.entries(messages).reduce(
     (localized, [source, translated]) => localized.replaceAll(`"${source}"`, `"${translated}"`),
@@ -182,12 +211,14 @@ const uniqueValues = [...new Set([
   ...extractScriptStrings(sourceScript),
   ...runtimeKeys
 ])];
+const careBlocks = [...new Set(extractCareBlocks(sourceHtml))];
 process.stdout.write(`Found ${uniqueValues.length} translatable strings.\n`);
 
 await mkdir(path.join(root, 'locales'), { recursive: true });
 for (const [locale, config] of Object.entries(locales)) {
   const existing = await readExistingPack(locale);
   const messages = await translateAll(uniqueValues, config.google, existing);
+  const translatedBlocks = await translateAll(careBlocks, config.google, config.blockOverrides);
   if (locale === 'zh-cn') {
     for (const source of Object.keys(messages)) messages[source] = messages[source].replaceAll('变形', '花色');
   }
@@ -195,7 +226,8 @@ for (const [locale, config] of Object.entries(locales)) {
   const pack = `window.PYGMY_LOCALE=${JSON.stringify({ locale, messages }, null, 2)};\n`;
   await writeFile(path.join(root, 'locales', `${locale}.js`), pack, 'utf8');
 
-  const translatedHtml = replaceQuotedStrings(replaceTextNodes(sourceHtml, messages), messages);
+  const contextualHtml = replaceCareBlocks(sourceHtml, translatedBlocks);
+  const translatedHtml = replaceQuotedStrings(replaceTextNodes(contextualHtml, messages), messages);
   const localized = localizeMetadata(translatedHtml, locale, config);
   await mkdir(path.join(root, locale), { recursive: true });
   await writeFile(path.join(root, locale, 'index.html'), localized, 'utf8');
