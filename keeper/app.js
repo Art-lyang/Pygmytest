@@ -130,9 +130,7 @@ function showResult(resultId, scoreSet, updateUrl) {
   renderScoreBars(scores);
 
   if (updateUrl) {
-    const url = new URL(window.location.href);
-    url.searchParams.set('result', resultId);
-    url.searchParams.set('s', encodeScores(scores));
+    const url = new URL(getResultUrl());
     history.replaceState({}, '', `${url.pathname}${url.search}`);
   }
   document.title = `${t(type.name)} | ${t('나는 어떤 피그미 집사일까?')}`;
@@ -147,7 +145,6 @@ function renderScoreBars(value) {
     return `<div class="score-row"><span>${t(type.short)}</span><div class="score-track"><div class="score-value" style="width:${Math.max(percent, 4)}%;--bar-color:${type.accent}"></div></div><b>${percent}</b></div>`;
   }).join('');
 }
-function encodeScores(value) { return TYPE_ORDER.map(id => Math.max(0, Math.round(value[id] || 0))).join(','); }
 function decodeScores(raw, resultId) {
   if (!raw) return Object.fromEntries(TYPE_ORDER.map((id, index) => [id, TYPES[resultId].profile[index]]));
   const parts = raw.split(',').map(Number);
@@ -156,6 +153,12 @@ function decodeScores(raw, resultId) {
   }
   return Object.fromEntries(TYPE_ORDER.map((id, index) => [id, parts[index]]));
 }
+function getResultUrl() {
+  const url = new URL(window.location.href);
+  url.search = '';
+  if (currentResultId) url.searchParams.set('result', currentResultId);
+  return url.toString();
+}
 function showToast(message) {
   window.clearTimeout(toastTimer);
   els.toast.textContent = message;
@@ -163,13 +166,12 @@ function showToast(message) {
   toastTimer = window.setTimeout(() => els.toast.classList.remove('is-visible'), 2400);
 }
 async function copyResultLink() {
-  const text = currentResultId ? `${t('나는')} ${t(TYPES[currentResultId].name)}!\n${t(TYPES[currentResultId].tagline)}\n${window.location.href}` : window.location.href;
   try {
-    await navigator.clipboard.writeText(text);
+    await navigator.clipboard.writeText(getResultUrl());
     showToast(t('결과 링크가 복사됐어요.'));
   } catch (error) {
     const textarea = document.createElement('textarea');
-    textarea.value = text;
+    textarea.value = getResultUrl();
     textarea.style.position = 'fixed';
     textarea.style.opacity = '0';
     document.body.appendChild(textarea);
@@ -183,7 +185,7 @@ async function copyResultLink() {
 async function shareResult() {
   if (!currentResultId) return;
   const type = TYPES[currentResultId];
-  const data = { title: `${t('나는')} ${t(type.name)}!`, text: `${t(type.tagline)}\n${t('피그미 집사 유형 테스트에서 확인해 보세요.')}`, url: window.location.href };
+  const data = { title: t(type.name), url: getResultUrl() };
   if (navigator.share) {
     try {
       await navigator.share(data);
