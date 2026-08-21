@@ -6,6 +6,7 @@ let currentIndex = 0;
 let scores = createEmptyScores();
 let currentResultId = null;
 let toastTimer = null;
+const t = value => window.PygmyI18n?.translate(value) || value;
 
 const els = {
   start: document.getElementById('start-screen'), quiz: document.getElementById('quiz-screen'), loading: document.getElementById('loading-screen'), result: document.getElementById('result-screen'),
@@ -38,7 +39,7 @@ function setScreen(screen) {
 function renderPreview() {
   els.preview.innerHTML = TYPE_ORDER.map(id => {
     const type = TYPES[id];
-    return `<div class="type-chip" style="--chip-bg:${type.soft};--chip-border:${type.accent}33"><strong>${type.short}</strong><small>${type.en.replace('THE ', '')}</small></div>`;
+    return `<div class="type-chip" style="--chip-bg:${type.soft};--chip-border:${type.accent}33"><strong>${t(type.short)}</strong><small>${type.en.replace('THE ', '')}</small></div>`;
   }).join('');
 }
 function startQuiz() {
@@ -56,15 +57,15 @@ function renderQuestion() {
   const step = currentIndex + 1;
   els.step.textContent = `${String(step).padStart(2, '0')} / 12`;
   els.progress.style.width = `${step / 12 * 100}%`;
-  els.kicker.textContent = `${item.kicker.toUpperCase()} · SCENARIO ${String(step).padStart(2, '0')}`;
-  els.question.textContent = item.text;
-  els.hint.textContent = item.hint;
+  els.kicker.textContent = `${t(item.kicker).toUpperCase()} · SCENARIO ${String(step).padStart(2, '0')}`;
+  els.question.textContent = t(item.text);
+  els.hint.textContent = t(item.hint);
   els.options.innerHTML = '';
   shuffle(item.options).forEach(option => {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'option-button';
-    button.textContent = option.text;
+    button.textContent = t(option.text);
     button.addEventListener('click', () => selectOption(button, option));
     els.options.appendChild(button);
   });
@@ -110,22 +111,22 @@ function showResult(resultId, scoreSet, updateUrl) {
   els.resultHero.style.setProperty('--result-accent', type.accent);
   els.resultHero.style.setProperty('--result-soft', type.soft);
   els.resultImage.src = type.image;
-  els.resultImage.alt = `${type.name} 결과 일러스트`;
+  els.resultImage.alt = `${t(type.name)} ${t('결과 일러스트')}`;
   els.resultIndex.textContent = type.index;
   els.resultIcon.innerHTML = ICONS[resultId];
-  els.resultName.textContent = type.name;
-  els.resultTagline.textContent = type.tagline;
-  els.resultSummaryTitle.textContent = type.summary;
-  els.resultDescription.textContent = type.description;
-  els.resultTraits.innerHTML = type.traits.map(trait => `<span>${trait}</span>`).join('');
-  els.resultStrengths.innerHTML = type.strengths.map(item => `<li>${item}</li>`).join('');
-  els.resultWatchouts.innerHTML = type.watchouts.map(item => `<li>${item}</li>`).join('');
+  els.resultName.textContent = t(type.name);
+  els.resultTagline.textContent = t(type.tagline);
+  els.resultSummaryTitle.textContent = t(type.summary);
+  els.resultDescription.textContent = t(type.description);
+  els.resultTraits.innerHTML = type.traits.map(trait => `<span>${t(trait)}</span>`).join('');
+  els.resultStrengths.innerHTML = type.strengths.map(item => `<li>${t(item)}</li>`).join('');
+  els.resultWatchouts.innerHTML = type.watchouts.map(item => `<li>${t(item)}</li>`).join('');
   els.routineIcon.innerHTML = ICONS[resultId];
-  els.resultRoutine.textContent = type.routine;
+  els.resultRoutine.textContent = t(type.routine);
   els.secondaryIcon.innerHTML = ICONS[secondaryId];
-  els.secondaryName.textContent = secondary.name;
-  els.secondaryCopy.textContent = type.secondaryCopy;
-  els.resultFit.textContent = type.fit;
+  els.secondaryName.textContent = t(secondary.name);
+  els.secondaryCopy.textContent = t(type.secondaryCopy);
+  els.resultFit.textContent = t(type.fit);
   renderScoreBars(scores);
 
   if (updateUrl) {
@@ -134,7 +135,7 @@ function showResult(resultId, scoreSet, updateUrl) {
     url.searchParams.set('s', encodeScores(scores));
     history.replaceState({}, '', `${url.pathname}${url.search}`);
   }
-  document.title = `${type.name} | 나는 어떤 피그미 집사일까?`;
+  document.title = `${t(type.name)} | ${t('나는 어떤 피그미 집사일까?')}`;
   track('keeper_result_view', { keeper_type: resultId, secondary_type: secondaryId });
   setScreen(els.result);
 }
@@ -143,7 +144,7 @@ function renderScoreBars(value) {
   els.scoreBars.innerHTML = TYPE_ORDER.map(id => {
     const type = TYPES[id];
     const percent = Math.round(value[id] / max * 100);
-    return `<div class="score-row"><span>${type.short}</span><div class="score-track"><div class="score-value" style="width:${Math.max(percent, 4)}%;--bar-color:${type.accent}"></div></div><b>${percent}</b></div>`;
+    return `<div class="score-row"><span>${t(type.short)}</span><div class="score-track"><div class="score-value" style="width:${Math.max(percent, 4)}%;--bar-color:${type.accent}"></div></div><b>${percent}</b></div>`;
   }).join('');
 }
 function encodeScores(value) { return TYPE_ORDER.map(id => Math.max(0, Math.round(value[id] || 0))).join(','); }
@@ -162,10 +163,10 @@ function showToast(message) {
   toastTimer = window.setTimeout(() => els.toast.classList.remove('is-visible'), 2400);
 }
 async function copyResultLink() {
-  const text = currentResultId ? `나는 ${TYPES[currentResultId].name}!\n${TYPES[currentResultId].tagline}\n${window.location.href}` : window.location.href;
+  const text = currentResultId ? `${t('나는')} ${t(TYPES[currentResultId].name)}!\n${t(TYPES[currentResultId].tagline)}\n${window.location.href}` : window.location.href;
   try {
     await navigator.clipboard.writeText(text);
-    showToast('결과 링크가 복사됐어요.');
+    showToast(t('결과 링크가 복사됐어요.'));
   } catch (error) {
     const textarea = document.createElement('textarea');
     textarea.value = text;
@@ -175,14 +176,14 @@ async function copyResultLink() {
     textarea.select();
     document.execCommand('copy');
     textarea.remove();
-    showToast('결과 링크가 복사됐어요.');
+    showToast(t('결과 링크가 복사됐어요.'));
   }
   track('keeper_result_copy', { keeper_type: currentResultId || 'unknown' });
 }
 async function shareResult() {
   if (!currentResultId) return;
   const type = TYPES[currentResultId];
-  const data = { title: `나는 ${type.name}!`, text: `${type.tagline}\n피그미 집사 유형 테스트에서 확인해 보세요.`, url: window.location.href };
+  const data = { title: `${t('나는')} ${t(type.name)}!`, text: `${t(type.tagline)}\n${t('피그미 집사 유형 테스트에서 확인해 보세요.')}`, url: window.location.href };
   if (navigator.share) {
     try {
       await navigator.share(data);
@@ -195,7 +196,7 @@ async function shareResult() {
   await copyResultLink();
 }
 function retryQuiz() {
-  document.title = '나는 어떤 피그미 집사일까? | 피그미 집사 유형 테스트';
+  document.title = `${t('나는 어떤 피그미 집사일까?')} | ${t('피그미 집사 유형 테스트')}`;
   startQuiz();
 }
 function hydrateFromQuery() {

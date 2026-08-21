@@ -17,12 +17,88 @@
     <lastmod>2026-08-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://pygmytest.com/lab/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pygmytest.com/en/lab/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://pygmytest.com/ja/lab/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://pygmytest.com/zh-cn/lab/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pygmytest.com/lab/" />
   </url>
   <url>
     <loc>https://pygmytest.com/keeper/</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://pygmytest.com/keeper/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pygmytest.com/en/keeper/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://pygmytest.com/ja/keeper/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://pygmytest.com/zh-cn/keeper/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pygmytest.com/keeper/" />
+  </url>
+  <url>
+    <loc>https://pygmytest.com/en/lab/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://pygmytest.com/lab/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pygmytest.com/en/lab/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://pygmytest.com/ja/lab/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://pygmytest.com/zh-cn/lab/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pygmytest.com/lab/" />
+  </url>
+  <url>
+    <loc>https://pygmytest.com/en/keeper/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://pygmytest.com/keeper/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pygmytest.com/en/keeper/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://pygmytest.com/ja/keeper/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://pygmytest.com/zh-cn/keeper/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pygmytest.com/keeper/" />
+  </url>
+  <url>
+    <loc>https://pygmytest.com/ja/lab/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://pygmytest.com/lab/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pygmytest.com/en/lab/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://pygmytest.com/ja/lab/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://pygmytest.com/zh-cn/lab/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pygmytest.com/lab/" />
+  </url>
+  <url>
+    <loc>https://pygmytest.com/ja/keeper/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://pygmytest.com/keeper/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pygmytest.com/en/keeper/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://pygmytest.com/ja/keeper/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://pygmytest.com/zh-cn/keeper/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pygmytest.com/keeper/" />
+  </url>
+  <url>
+    <loc>https://pygmytest.com/zh-cn/lab/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://pygmytest.com/lab/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pygmytest.com/en/lab/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://pygmytest.com/ja/lab/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://pygmytest.com/zh-cn/lab/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pygmytest.com/lab/" />
+  </url>
+  <url>
+    <loc>https://pygmytest.com/zh-cn/keeper/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://pygmytest.com/keeper/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pygmytest.com/en/keeper/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://pygmytest.com/ja/keeper/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://pygmytest.com/zh-cn/keeper/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pygmytest.com/keeper/" />
   </url>
   <url>
     <loc>https://pygmytest.com/en/</loc>

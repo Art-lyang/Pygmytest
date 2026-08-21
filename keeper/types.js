@@ -21,7 +21,7 @@ export const TYPES = {
     routine: '오늘 5분만 같은 시간대에 관찰하고, 평소와 달랐던 행동 하나와 그대로였던 행동 하나를 함께 기록해 보세요.',
     fit: '낯선 환경에 천천히 적응하거나 행동 패턴이 뚜렷한 신중한 개체와 잘 맞습니다.',
     secondaryCopy: '관찰 결과를 실제 환경 개선으로 연결할 때 당신의 강점이 더 커집니다.',
-    accent: '#628a55', soft: '#edf5e9', image: '/lab/img/behavior.webp', profile: [30, 18, 12, 22, 21, 9]
+    accent: '#628a55', soft: '#edf5e9', image: '/lab/img/behavior-hd.webp', profile: [30, 18, 12, 22, 21, 9]
   },
   architect: {
     index: '02', name: '환경설계형 집사', short: '환경형', en: 'THE ARCHITECT',
@@ -34,7 +34,7 @@ export const TYPES = {
     routine: '케이지를 위·중간·아래 세 구역으로 나눠 온도, 은신처, 이동 동선을 한 번씩 점검해 보세요.',
     fit: '환경 변화에 민감하거나 은신처와 동선 선택이 분명한 개체와 안정적인 관계를 만들기 좋습니다.',
     secondaryCopy: '잘 설계한 공간을 꾸준히 기록하면 사육 안정성이 더욱 높아집니다.',
-    accent: '#d47731', soft: '#fff0df', image: '/lab/img/readiness.webp', profile: [18, 31, 10, 21, 18, 14]
+    accent: '#d47731', soft: '#fff0df', image: '/lab/img/readiness-hd.webp', profile: [18, 31, 10, 21, 18, 14]
   },
   companion: {
     index: '03', name: '다정한 교감형 집사', short: '교감형', en: 'THE COMPANION',
@@ -47,7 +47,7 @@ export const TYPES = {
     routine: '오늘은 손을 먼저 대지 말고, 같은 위치에서 조용히 기다린 뒤 개체가 스스로 다가오면 작은 보상을 주세요.',
     fit: '사람에게 호기심을 보이거나 보상 학습에 빠르게 반응하는 개체와 좋은 케미를 만들기 쉽습니다.',
     secondaryCopy: '다정함에 관찰과 환경 기준을 더하면 더 안전한 교감이 됩니다.',
-    accent: '#cc6f79', soft: '#fdecef', image: '/lab/img/compatibility.webp', profile: [15, 11, 31, 14, 23, 7]
+    accent: '#cc6f79', soft: '#fdecef', image: '/lab/img/compatibility-hd.webp', profile: [15, 11, 31, 14, 23, 7]
   },
   recorder: {
     index: '04', name: '기록형 데이터 집사', short: '기록형', en: 'THE RECORDER',
@@ -60,7 +60,7 @@ export const TYPES = {
     routine: '먹이, 활동, 환경 중 가장 중요한 세 항목만 골라 오늘부터 동일한 형식으로 기록해 보세요.',
     fit: '활동량이나 체중 변화가 뚜렷하고 장기 관찰이 필요한 개체를 안정적으로 관리하는 데 강합니다.',
     secondaryCopy: '기록을 관찰과 연결하면 숫자 뒤에 있는 행동까지 이해할 수 있습니다.',
-    accent: '#5b8fa3', soft: '#e8f2f5', image: '/lab/img/keeper.webp', profile: [23, 20, 12, 32, 14, 16]
+    accent: '#5b8fa3', soft: '#e8f2f5', image: '/lab/img/keeper-hd.webp', profile: [23, 20, 12, 32, 14, 16]
   },
   naturalist: {
     index: '05', name: '자연주의형 집사', short: '자율형', en: 'THE NATURALIST',
@@ -73,7 +73,7 @@ export const TYPES = {
     routine: '은신처, 먹이 위치, 이동 경로 중 하나를 개체가 선택할 수 있도록 두 가지 옵션으로 준비해 보세요.',
     fit: '독립적이고 새로운 구조물을 천천히 탐색하는 개체, 사람보다 환경과의 상호작용을 즐기는 개체와 잘 맞습니다.',
     secondaryCopy: '자율성을 유지하면서 기록 기준을 정하면 방치 없이 자연스러운 돌봄이 가능합니다.',
-    accent: '#718b62', soft: '#edf2e8', image: '/lab/img/personality.webp', profile: [20, 17, 22, 12, 32, 8]
+    accent: '#718b62', soft: '#edf2e8', image: '/lab/img/personality-hd.webp', profile: [20, 17, 22, 12, 32, 8]
   },
   strategist: {
     index: '06', name: '브리딩 전략가 집사', short: '전략형', en: 'THE STRATEGIST',
@@ -86,7 +86,7 @@ export const TYPES = {
     routine: '브리딩 후보의 건강, 연령, 혈통, 과거 기록을 한 표에 모아 아직 확인되지 않은 항목을 표시해 보세요.',
     fit: '건강·혈통 기록이 충분하고 장기적인 계획 아래 관리되는 개체와 가장 잘 맞습니다.',
     secondaryCopy: '전략에 환경과 관찰 기준을 더하면 책임 있는 브리딩 계획이 완성됩니다.',
-    accent: '#806aa9', soft: '#f0ebf8', image: '/lab/img/morph.webp', profile: [17, 20, 8, 23, 9, 33]
+    accent: '#806aa9', soft: '#f0ebf8', image: '/lab/img/morph-hd.webp', profile: [17, 20, 8, 23, 9, 33]
   }
 };
 

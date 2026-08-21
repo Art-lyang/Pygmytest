@@ -10,10 +10,10 @@
     return messages[value] || messages[normalized] || value;
   }
 
-  function translateDocument() {
+  function translateDocument(root = document.body) {
     if (pack.locale === 'ko') return;
 
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {
         const parent = node.parentElement;
         if (!parent || parent.closest('script, style, noscript')) return NodeFilter.FILTER_REJECT;
@@ -140,5 +140,14 @@
   document.addEventListener('DOMContentLoaded', () => {
     translateDocument();
     addTestLabEntry();
+    if (pack.locale !== 'ko') {
+      const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => mutation.addedNodes.forEach(node => {
+          if (node.nodeType === Node.TEXT_NODE && node.parentElement) translateDocument(node.parentElement);
+          else if (node.nodeType === Node.ELEMENT_NODE) translateDocument(node);
+        }));
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
   }, { once: true });
 })();

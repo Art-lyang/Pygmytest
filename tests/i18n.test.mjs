@@ -32,9 +32,10 @@ test('pages declare an existing favicon instead of triggering a browser 404', as
 
 test('sitemap lists every language URL and hreflang set', async () => {
   const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8');
-  assert.ok((sitemap.match(/<url>/g) || []).length >= variants.length);
+  const urlCount = (sitemap.match(/<url>/g) || []).length;
+  assert.ok(urlCount >= variants.length);
   for (const variant of variants) assert.ok(sitemap.includes(variant.canonical));
-  assert.equal((sitemap.match(/hreflang="x-default"/g) || []).length, 4);
+  assert.equal((sitemap.match(/hreflang="x-default"/g) || []).length, urlCount);
 });
 
 test('language packs cover quiz questions and result copy', async () => {
