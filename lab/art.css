@@ -41,37 +41,37 @@
 }
 
 .visual-morph {
-  --lab-art: url('/lab/img/morph.webp');
+  --lab-art: url('/lab/img/morph-hd.webp');
   --lab-art-position: center 50%;
   --lab-art-fallback: #d8b56c;
 }
 
 .visual-keeper {
-  --lab-art: url('/lab/img/keeper.webp');
+  --lab-art: url('/lab/img/keeper-hd.webp');
   --lab-art-position: center 49%;
   --lab-art-fallback: #e8b370;
 }
 
 .visual-personality {
-  --lab-art: url('/lab/img/personality.webp');
+  --lab-art: url('/lab/img/personality-hd.webp');
   --lab-art-position: center 48%;
   --lab-art-fallback: #8c6246;
 }
 
 .visual-compatibility {
-  --lab-art: url('/lab/img/compatibility.webp');
+  --lab-art: url('/lab/img/compatibility-hd.webp');
   --lab-art-position: center 47%;
   --lab-art-fallback: #efc9d0;
 }
 
 .visual-readiness {
-  --lab-art: url('/lab/img/readiness.webp');
+  --lab-art: url('/lab/img/readiness-hd.webp');
   --lab-art-position: center 52%;
   --lab-art-fallback: #c69b63;
 }
 
 .visual-behavior {
-  --lab-art: url('/lab/img/behavior.webp');
+  --lab-art: url('/lab/img/behavior-hd.webp');
   --lab-art-position: center 51%;
   --lab-art-fallback: #9d7c9d;
 }
