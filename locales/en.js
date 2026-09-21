@@ -1029,6 +1029,9 @@ window.PYGMY_LOCALE={
     "나는": "I am",
     "피그미 집사 유형 테스트": "African Pygmy Dormouse Keeper Type Test",
     "피그미 집사 유형 테스트에서 확인해 보세요.": "Find out in our Pygmy Keeper Type Test.",
+    "다른 피그미 테스트 둘러보기": "Explore other African pygmy dormouse tests",
+    "다른 피그미 테스트도 해볼까요?": "Try another African pygmy dormouse test",
+    "모프 · 집사 유형 · 궁합 · 준비도 테스트를 한곳에서 확인하세요": "Explore morph, keeper type, compatibility, and care-readiness tests in one place.",
     "🐿 Pygmy Squirrel Morph Test": "🐿 African Pygmy Dormouse (Micro Squirrel)",
     "가볍게 즐기는 성향 테스트부터 실제 사육에 도움이 되는 준비도 점검까지. 하나씩 새로운 피그미 테스트를 공개합니다.": "From lighthearted personality quizzes to practical care-readiness checks, discover a growing collection of African pygmy dormouse tests."
   }

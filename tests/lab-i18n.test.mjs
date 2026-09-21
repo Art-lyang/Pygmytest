@@ -7,7 +7,8 @@ const root = path.resolve(import.meta.dirname, '..');
 const locales = [
   { folder: 'en', lang: 'en', recorder: 'Care Recorder' },
   { folder: 'ja', lang: 'ja', recorder: '記録管理タイプ' },
-  { folder: 'zh-cn', lang: 'zh-CN', recorder: '记录管理型' }
+  { folder: 'zh-cn', lang: 'zh-CN', recorder: '记录管理型' },
+  { folder: 'zh-tw', lang: 'zh-TW', recorder: '紀錄管理型' }
 ];
 
 for (const route of ['lab', 'keeper']) {
@@ -15,7 +16,7 @@ for (const route of ['lab', 'keeper']) {
     for (const locale of locales) {
       const html = await readFile(path.join(root, locale.folder, route, 'index.html'), 'utf8');
       assert.match(html, new RegExp(`<html lang="${locale.lang}">`));
-      assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 5);
+      assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 6);
       assert.match(html, new RegExp(`<a href="/${locale.folder}/${route}/" lang="${locale.lang}"[^>]*aria-current="page"`));
       assert.match(html, new RegExp(`<a href="/${route}/" lang="ko"`));
       const auditable = html.replace(/<!--[^]*?-->/g, '').replace(/<nav class="locale-switcher"[^]*?<\/nav>/, '');

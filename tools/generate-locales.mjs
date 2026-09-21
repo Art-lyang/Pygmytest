@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const root = path.resolve(import.meta.dirname, '..');
+const assetVersion = '20260921-1';
 const sourceHtml = await readFile(path.join(root, 'index.html'), 'utf8');
 const sourceScript = await readFile(path.join(root, 'script.js'), 'utf8');
 const labHtml = await readFile(path.join(root, 'lab', 'index.html'), 'utf8');
@@ -57,7 +58,10 @@ const locales = {
       '피그미가 평소와 다르게 행동할 때 무엇부터 확인하나요? 12개의 생활형 질문으로 나의 관찰·환경·교감·기록 성향을 알아봅니다.': 'When an African pygmy dormouse behaves differently, what do you check first? Explore your observation, habitat, bonding, and record-keeping style through 12 practical questions.',
       '개 질문': ' questions', '가지 결과': ' results',
       '관찰형': 'Observant', '환경형': 'Habitat', '교감형': 'Companion',
-      '기록형': 'Recorder', '자율형': 'Naturalist', '계획형': 'Planner'
+      '기록형': 'Recorder', '자율형': 'Naturalist', '계획형': 'Planner',
+      '다른 피그미 테스트 둘러보기': 'Explore other African pygmy dormouse tests',
+      '다른 피그미 테스트도 해볼까요?': 'Try another African pygmy dormouse test',
+      '모프 · 집사 유형 · 궁합 · 준비도 테스트를 한곳에서 확인하세요': 'Explore morph, keeper type, compatibility, and care-readiness tests in one place.'
     },
     blockOverrides: {
       [careLeadSource]: 'The African pygmy dormouse (<i>Graphiurus murinus</i>) is manageable even for first-time keepers when <b>temperature and diet are set correctly</b>. In captivity, its average lifespan is about <b>6 years</b>.',
@@ -93,7 +97,10 @@ const locales = {
       '든든한 계획형 집사': 'しっかり計画タイプ',
       '피그미가 평소와 다르게 행동할 때 무엇부터 확인하나요? 12개의 생활형 질문으로 나의 관찰·환경·교감·기록 성향을 알아봅니다.': 'アフリカヤマネがいつもと違う行動をしたとき、最初に何を確認しますか？12の実践的な質問から、観察・環境・ふれあい・記録の傾向を確認します。',
       '관찰형': '観察', '환경형': '環境', '교감형': 'ふれあい',
-      '기록형': '記録', '자율형': '自然', '계획형': '計画'
+      '기록형': '記録', '자율형': '自然', '계획형': '計画',
+      '다른 피그미 테스트 둘러보기': 'ほかのアフリカヤマネテストを見る',
+      '다른 피그미 테스트도 해볼까요?': 'ほかのアフリカヤマネテストも試しますか？',
+      '모프 · 집사 유형 · 궁합 · 준비도 테스트를 한곳에서 확인하세요': 'モルフ・飼育者タイプ・相性・飼育準備度のテストをまとめて確認できます。'
     },
     blockOverrides: {
       [careLeadSource]: 'アフリカヤマネ（<i>Graphiurus murinus</i>）は、<b>温度と食事を適切に管理すれば</b>、初心者でも飼育できます。飼育下での平均寿命は約<b>6年</b>です。',
@@ -137,7 +144,25 @@ const locales = {
       '든든한 계획형 집사': '稳健规划型饲养者',
       '피그미가 평소와 다르게 행동할 때 무엇부터 확인하나요? 12개의 생활형 질문으로 나의 관찰·환경·교감·기록 성향을 알아봅니다.': '当非洲侏儒睡鼠的行为与平时不同时，你会先检查什么？通过12道生活化问题了解你的观察、环境、互动和记录倾向。',
       '관찰형': '观察', '환경형': '环境', '교감형': '互动',
-      '기록형': '记录', '자율형': '自然', '계획형': '规划'
+      '기록형': '记录', '자율형': '自然', '계획형': '规划',
+      '진행도': '进度', '개 질문': '道题', '가지 결과': '种结果',
+      '테스트 둘러보기': '浏览测试', '어떤 테스트를 해볼까요?': '想做哪项测试？',
+      '지금 가능': '立即体验', '준비 중': '即将推出', '준비 중이에요': '即将推出',
+      '집사 유형 테스트': '饲养者类型测试',
+      '피그미를 대하는 나만의 방식': '我照护非洲侏儒睡鼠的方式',
+      '누군가 나의 첫인상을 묻는다면?': '如果有人问起对我的第一印象？',
+      '모임에서 나의 포지션은?': '在聚会中，我通常扮演什么角色？',
+      '나의 옷 스타일에 가깝다면?': '哪一种最接近我的穿衣风格？',
+      '내가 선택한다면?': '如果要选一间房子，我会选？',
+      '피그미다람쥐가 내 핸드폰을 훔쳐갔다. 나는?': '非洲侏儒睡鼠偷走了我的手机，我会怎么做？',
+      '내 이불 속에서 다람쥐를 발견했다. 반응은?': '在被子里发现一只睡鼠，我的反应是？',
+      '처음 키우는 사람에게 한 가지만 조언한다면?': '如果只能给第一次饲养的人一条建议？',
+      '노말': '原色', '링테일': '环尾', '파이드': '花斑', '오레오': '奥利奥',
+      '달마시안': '达尔马提亚斑点', '마스크': '面罩', '하이화이트': '高白',
+      '루시스틱': '淡色型', '더스트': '尘灰', '블랙': '黑色',
+      '다른 피그미 테스트 둘러보기': '浏览其他非洲侏儒睡鼠测试',
+      '다른 피그미 테스트도 해볼까요?': '要再做一个非洲侏儒睡鼠测试吗？',
+      '모프 · 집사 유형 · 궁합 · 준비도 테스트를 한곳에서 확인하세요': '在这里查看花色、饲养者类型、契合度和饲养准备度测试。'
     },
     blockOverrides: {
       [careLeadSource]: '非洲侏儒睡鼠（<i>Graphiurus murinus</i>）只要<b>妥善控制温度并合理喂食</b>，新手也可以饲养。人工饲养条件下的平均寿命约为<b>6年</b>。',
@@ -146,6 +171,63 @@ const locales = {
       [labHeroLeadSource]: '从轻松有趣的性格测试到实用的饲养准备度检查。<br class="desktop-only"> 我们将持续推出新的非洲侏儒睡鼠测试。',
       [labMorphHeadingSource]: '你是哪种<br>非洲侏儒睡鼠花色？',
       [labKeeperHeadingSource]: '你是哪种<br>非洲侏儒睡鼠饲养者？'
+    }
+  },
+  'zh-tw': {
+    google: 'zh-TW', htmlLang: 'zh-TW', path: '/zh-tw/', label: '繁體中文',
+    title: '非洲侏儒睡鼠（Graphiurus murinus）花色測驗',
+    description: '透過10道題目找出你對應的非洲侏儒睡鼠花色，並查看實用飼養重點。',
+    keywords: '非洲侏儒睡鼠, 非洲睡鼠, 非洲林睡鼠, Graphiurus murinus, 睡鼠花色, 非洲睡鼠飼養, 睡鼠種類',
+    schemaName: '非洲侏儒睡鼠花色測驗',
+    schemaDescription: '非洲侏儒睡鼠（Graphiurus murinus）的10道花色測驗與實用飼養指南。',
+    pages: {
+      lab: { title: '非洲侏儒睡鼠測驗實驗室', description: '集中體驗花色、飼養者類型、個性、契合度和飼養準備度測驗。' },
+      keeper: { title: '你是哪種非洲侏儒睡鼠飼養者？', description: '透過12道生活化題目，了解你在6種非洲侏儒睡鼠照護類型中的傾向。' }
+    },
+    overrides: {
+      '한국어': '韓語',
+      '내가 피그미다람쥐라면': '如果我是非洲侏儒睡鼠，',
+      '어떤 모프': '會是哪種花色', '일까?': '呢？',
+      '랜덤 10문항으로 알아보는 나의 모프': '用10道隨機題找出你的專屬花色',
+      '다시 해도 매번 다른 질문이 나와요!': '每次重測都會遇到不同的題目！',
+      '명이 테스트했어요': ' 人已完成測驗', '✨ 10가지 결과 모프': '✨ 10種花色結果',
+      '테스트 시작하기': '開始測驗', '진행도': '進度',
+      '🐿 Pygmy Squirrel Morph Test': '🐿 非洲侏儒睡鼠（Graphiurus murinus）',
+      '피그미 테스트랩': '非洲侏儒睡鼠測驗實驗室',
+      '나는 어떤 피그미 집사일까?': '你是哪種非洲侏儒睡鼠飼養者？',
+      '피그미 집사 유형 테스트': '非洲侏儒睡鼠飼養者類型測驗',
+      '관찰형 연구자 집사': '觀察研究型', '환경설계형 집사': '環境規劃型',
+      '다정한 교감형 집사': '互動陪伴型', '기록형 데이터 집사': '紀錄管理型',
+      '자연주의형 집사': '自然照護型', '든든한 계획형 집사': '穩健規劃型',
+      '피그미가 평소와 다르게 행동할 때 무엇부터 확인하나요? 12개의 생활형 질문으로 나의 관찰·환경·교감·기록 성향을 알아봅니다.': '當非洲侏儒睡鼠的行為和平常不一樣時，你會先檢查什麼？透過12道生活化題目了解你的觀察、環境、互動和紀錄傾向。',
+      '관찰형': '觀察', '환경형': '環境', '교감형': '互動',
+      '기록형': '紀錄', '자율형': '自然', '계획형': '規劃',
+      '개 질문': '道題', '가지 결과': '種結果',
+      '테스트 둘러보기': '瀏覽測驗', '어떤 테스트를 해볼까요?': '想做哪項測驗？',
+      '지금 가능': '立即體驗', '준비 중': '即將推出', '준비 중이에요': '即將推出',
+      '집사 유형 테스트': '飼養者類型測驗',
+      '피그미를 대하는 나만의 방식': '我照護非洲侏儒睡鼠的方式',
+      '누군가 나의 첫인상을 묻는다면?': '如果有人問起對我的第一印象？',
+      '모임에서 나의 포지션은?': '在聚會中，我通常扮演什麼角色？',
+      '나의 옷 스타일에 가깝다면?': '哪一種最接近我的穿衣風格？',
+      '내가 선택한다면?': '如果要選一間房子，我會選？',
+      '피그미다람쥐가 내 핸드폰을 훔쳐갔다. 나는?': '非洲侏儒睡鼠偷走了我的手機，我會怎麼做？',
+      '내 이불 속에서 다람쥐를 발견했다. 반응은?': '在被子裡發現一隻睡鼠，我的反應是？',
+      '처음 키우는 사람에게 한 가지만 조언한다면?': '如果只能給第一次飼養的人一條建議？',
+      '노말': '原色', '링테일': '環尾', '파이드': '花斑', '오레오': '奧利奧',
+      '달마시안': '達爾馬提亞斑點', '마스크': '面罩', '하이화이트': '高白',
+      '루시스틱': '淡色型', '더스트': '塵灰', '블랙': '黑色',
+      '다른 피그미 테스트 둘러보기': '瀏覽其他非洲侏儒睡鼠測驗',
+      '다른 피그미 테스트도 해볼까요?': '要再做一個非洲侏儒睡鼠測驗嗎？',
+      '모프 · 집사 유형 · 궁합 · 준비도 테스트를 한곳에서 확인하세요': '在這裡查看花色、飼養者類型、契合度和飼養準備度測驗。'
+    },
+    blockOverrides: {
+      [careLeadSource]: '非洲侏儒睡鼠（<i>Graphiurus murinus</i>）只要<b>妥善控制溫度並提供均衡飲食</b>，新手也可以飼養。人工飼養下的平均壽命約為<b>6年</b>。',
+      [keeperHeadingSource]: '你是哪種<br><em>非洲侏儒睡鼠飼養者</em>？',
+      [labHeroSource]: '更了解自己與非洲侏儒睡鼠的<br><em>測驗空間</em>',
+      [labHeroLeadSource]: '從輕鬆有趣的個性測驗到實用的飼養準備度檢查。<br class="desktop-only"> 我們會持續推出新的非洲侏儒睡鼠測驗。',
+      [labMorphHeadingSource]: '你是哪種<br>非洲侏儒睡鼠花色？',
+      [labKeeperHeadingSource]: '你是哪種<br>非洲侏儒睡鼠飼養者？'
     }
   }
 };
@@ -164,11 +246,11 @@ function normalizeHtml(value) {
   return value.replace(/\s+/g, ' ').trim();
 }
 
-function extractCareBlocks(html) {
+function extractCareBlocks(html, sourceOnly = true) {
   const section = html.match(/<section class="care-guide">[\s\S]*?<\/section>/i)?.[0] || '';
   return [...section.matchAll(/<(h1|h2|h3|p|summary|li)\b[^>]*>([\s\S]*?)<\/\1>/gi)]
     .map(match => normalizeHtml(match[2]))
-    .filter(value => /[가-힣]/.test(value));
+    .filter(value => !sourceOnly || /[가-힣]/.test(value));
 }
 
 function extractScriptStrings(script) {
@@ -255,6 +337,17 @@ async function readExistingPack(locale) {
   }
 }
 
+async function readExistingCareBlocks(locale, sourceBlocks) {
+  try {
+    const html = await readFile(path.join(root, locale, 'index.html'), 'utf8');
+    const localizedBlocks = extractCareBlocks(html, false);
+    if (localizedBlocks.length !== sourceBlocks.length) return {};
+    return Object.fromEntries(sourceBlocks.map((source, index) => [source, localizedBlocks[index]]));
+  } catch {
+    return {};
+  }
+}
+
 function localizeMetadata(html, locale, config) {
   const canonical = `https://pygmytest.com${config.path}`;
   return html
@@ -273,13 +366,13 @@ function localizeMetadata(html, locale, config) {
     .replace('"inLanguage": "ko-KR"', `"inLanguage": "${config.htmlLang}"`)
     .replace(/ aria-current="page"/g, '')
     .replace(`href="${config.path}"`, `href="${config.path}" aria-current="page"`)
-    .replace('<script src="/i18n.js?v=20260814-1"></script>', `<script src="/locales/${locale}.js?v=20260814-1"></script>\n<script src="/i18n.js?v=20260814-1"></script>`);
+    .replace(/<script src="\/i18n\.js\?v=[^"]+"><\/script>/, `<script src="/locales/${locale}.js?v=${assetVersion}"></script>\n<script src="/i18n.js?v=${assetVersion}"></script>`);
 }
 
 function routeAlternates(route) {
   return [
     ['ko-KR', `/${route}/`], ['en', `/en/${route}/`], ['ja', `/ja/${route}/`],
-    ['zh-CN', `/zh-cn/${route}/`], ['x-default', `/${route}/`]
+    ['zh-CN', `/zh-cn/${route}/`], ['zh-TW', `/zh-tw/${route}/`], ['x-default', `/${route}/`]
   ].map(([lang, url]) => `<link rel="alternate" hreflang="${lang}" href="https://pygmytest.com${url}">`).join('\n  ');
 }
 
@@ -305,8 +398,9 @@ function localizeExtraPage(html, locale, config, messages, route) {
     .replace(/<a href="[^"]*" lang="en"/, `<a href="/en/${route}/" lang="en"`)
     .replace(/<a href="[^"]*" lang="ja"/, `<a href="/ja/${route}/" lang="ja"`)
     .replace(/<a href="[^"]*" lang="zh-CN"/, `<a href="/zh-cn/${route}/" lang="zh-CN"`)
+    .replace(/<a href="[^"]*" lang="zh-TW"/, `<a href="/zh-tw/${route}/" lang="zh-TW"`)
     .replace(new RegExp(`(<a href="[^"]*" lang="${config.htmlLang}"[^>]*)(>)`), '$1 aria-current="page"$2');
-  const localeScripts = `<script src="/locales/${locale}.js?v=20260821-1"></script>\n  <script src="/i18n.js?v=20260821-1"></script>`;
+  const localeScripts = `<script src="/locales/${locale}.js?v=${assetVersion}"></script>\n  <script src="/i18n.js?v=${assetVersion}"></script>`;
   if (route === 'keeper') {
     localized = localized.replace('<script src="/keeper/script.js?v=20260820-1"></script>', `${localeScripts}\n  <script src="/keeper/script.js?v=20260820-1"></script>`);
   } else {
@@ -326,7 +420,10 @@ const runtimeKeys = [
   '나는 어떤 피그미 집사일까?',
   '피그미 집사 유형 테스트',
   '피그미 집사 유형 테스트에서 확인해 보세요.',
-  '결과 링크가 복사됐어요.'
+  '결과 링크가 복사됐어요.',
+  '다른 피그미 테스트 둘러보기',
+  '다른 피그미 테스트도 해볼까요?',
+  '모프 · 집사 유형 · 궁합 · 준비도 테스트를 한곳에서 확인하세요'
 ];
 
 const uniqueValues = [...new Set([
@@ -345,17 +442,55 @@ process.stdout.write(`Found ${uniqueValues.length} translatable strings.\n`);
 
 await mkdir(path.join(root, 'locales'), { recursive: true });
 for (const [locale, config] of Object.entries(locales)) {
-  const existing = await readExistingPack(locale);
+  const existing = { ...(await readExistingPack(locale)), ...config.overrides };
   const messages = await translateAll(uniqueValues, config.google, existing);
-  const translatedBlocks = await translateAll(careBlocks, config.google, config.blockOverrides);
+  const existingCareBlocks = await readExistingCareBlocks(locale, careBlocks);
+  const translatedBlocks = await translateAll(careBlocks, config.google, { ...existingCareBlocks, ...config.blockOverrides });
   if (locale === 'en') {
     for (const source of Object.keys(messages)) messages[source] = messages[source].replaceAll('Butler', 'Keeper').replaceAll('butler', 'keeper');
   }
   if (locale === 'ja') {
     for (const source of Object.keys(messages)) messages[source] = messages[source].replaceAll('執事', '飼育者');
   }
-  if (locale === 'zh-cn') {
-    for (const source of Object.keys(messages)) messages[source] = messages[source].replaceAll('变形', '花色').replaceAll('管家', '饲养者').replaceAll('巴特勒', '饲养者');
+  if (locale === 'zh-cn' || locale === 'zh-tw') {
+    const traditional = locale === 'zh-tw';
+    const animal = traditional ? '非洲侏儒睡鼠' : '非洲侏儒睡鼠';
+    const keeper = traditional ? '飼養者' : '饲养者';
+    const morph = traditional ? '花色' : '花色';
+    const glossary = [
+      ['노말', traditional ? '原色' : '原色', ['普通狗', '普通的']],
+      ['파이드', traditional ? '花斑' : '花斑', ['花哨的']],
+      ['달마시안', traditional ? '達爾馬提亞斑點' : '达尔马提亚斑点', ['斑點狗', '斑点狗']],
+      ['루시스틱', traditional ? '淡色型' : '淡色型', ['白種人的', '白种人的', '白種人', '白种人', '白種', '白种']],
+      ['더스트', traditional ? '塵灰' : '尘灰', ['灰塵', '灰尘']],
+      ['블랙', traditional ? '黑色' : '黑色', ['黑色的']]
+    ];
+    for (const source of Object.keys(messages)) {
+      let value = messages[source]
+        .replaceAll('俾格米人', animal)
+        .replaceAll('俾格米', animal)
+        .replaceAll('管家', keeper)
+        .replaceAll('執事', keeper)
+        .replaceAll('执事', keeper)
+        .replaceAll('巴特勒', keeper)
+        .replaceAll('变形', morph)
+        .replaceAll('變形', morph);
+      const qualityFixes = traditional ? [
+        ['養鳥用品', '飼養用品'], ['育種信息', '飼養資訊'], ['育種信息', '飼養資訊'],
+        ['工資單', '餵食計畫'], ['聖餐法', '互動方式'], ['養育嬰兒', '初次飼養'],
+        ['物體', '個體'], ['實體', '個體']
+      ] : [
+        ['养鸟用品', '饲养用品'], ['育种信息', '饲养信息'], ['育種信息', '饲养信息'],
+        ['工资单', '喂食计划'], ['圣餐法', '互动方式'], ['养育婴儿', '初次饲养'],
+        ['物体', '个体'], ['实体', '个体']
+      ];
+      for (const [from, to] of qualityFixes) value = value.replaceAll(from, to);
+      for (const [term, preferred, aliases] of glossary) {
+        if (!source.includes(term)) continue;
+        for (const alias of aliases) value = value.replaceAll(alias, preferred);
+      }
+      messages[source] = value;
+    }
   }
   Object.assign(messages, config.overrides);
   const pack = `window.PYGMY_LOCALE=${JSON.stringify({ locale, messages }, null, 2)};\n`;

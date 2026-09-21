@@ -38,7 +38,8 @@
 
   function addTestLabEntry() {
     const normalizedPath = window.location.pathname.replace(/index\.html$/, '');
-    if (normalizedPath !== '/') return;
+    const localePrefix = pack.locale === 'ko' ? '' : `/${pack.locale}`;
+    if (normalizedPath !== `${localePrefix}/`) return;
     if (document.querySelector('[data-test-lab-entry]')) return;
 
     const style = document.createElement('style');
@@ -110,14 +111,14 @@
 
     const createEntry = extraClass => {
       const link = document.createElement('a');
-      link.href = '/lab/';
+      link.href = `${localePrefix}/lab/`;
       link.className = `test-lab-entry ${extraClass || ''}`.trim();
       link.dataset.testLabEntry = 'true';
-      link.setAttribute('aria-label', '다른 피그미 테스트 둘러보기');
+      link.setAttribute('aria-label', translate('다른 피그미 테스트 둘러보기'));
       link.innerHTML = `
         <span class="test-lab-entry-copy">
-          <strong>🐿 다른 피그미 테스트도 해볼까요?</strong>
-          <small>모프 · 집사 유형 · 궁합 · 준비도 테스트를 한곳에서 확인하세요</small>
+          <strong>🐿 ${translate('다른 피그미 테스트도 해볼까요?')}</strong>
+          <small>${translate('모프 · 집사 유형 · 궁합 · 준비도 테스트를 한곳에서 확인하세요')}</small>
         </span>
         <span class="test-lab-entry-arrow" aria-hidden="true">→</span>
       `;
